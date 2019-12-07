@@ -1,0 +1,3 @@
+* Kiskalesi
+
+This project contains the preparation for a future tourism website.
