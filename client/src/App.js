@@ -18,6 +18,7 @@ import Infos from './components/Infos';
 import AppEvent from './components/AppEvent';
 import NotFound from './components/notFound';
 import CreateEvent from './components/CreateEvent';
+import AppFooter from './components/AppFooter';
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
       <AppNavbar />
       <Router>
         <Container>
-          <div style={{marginTop: 100 + "px"}}></div>
+          <div style={{height: 50 + "px"}}></div>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/agenda/:eventId?" component={Agenda} />
@@ -39,6 +40,7 @@ function App() {
           </Switch>
        </Container>
       </Router>
+      <AppFooter />
     </div>
   );
 }
