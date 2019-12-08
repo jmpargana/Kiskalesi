@@ -1,7 +1,6 @@
 const router = require('express').Router();
 let Event = require('../models/Event');
 
-
 /**
  * CRUD methods for Event model
  */
@@ -47,12 +46,12 @@ router.put('/:id', (req, res) => {
       event.date = req.body.about;
       event.contact = req.body.contact;
 
-      exercise.save()
+      exercise
+        .save()
         .then(() => res.json('Exercise updated'))
         .catch(err => res.status(400).json('Error: ' + err));
     })
-      .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Error: ' + err));
 });
-
 
 module.exports = router;

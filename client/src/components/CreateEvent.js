@@ -141,7 +141,8 @@ class CreateEvent extends Component {
       contact: this.state.contact,
     };
 
-    console.log(event);
+    axios.post('localhost:3001/events/post', event)
+      .then(res => console.log(res.data));
 
     window.location = '/';
   }

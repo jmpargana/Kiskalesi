@@ -26,6 +26,7 @@ function App() {
       <AppNavbar />
       <Router>
         <Container>
+          <div style={{marginTop: 100 + "px"}}></div>
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/agenda/:eventId?" component={Agenda} />

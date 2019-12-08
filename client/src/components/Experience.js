@@ -1,20 +1,34 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Redirect
-} from 'react-router-dom';
+import React, {Component} from 'react';
+import axios from 'axios';
 
+class Experience extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      eventId: this.props.match.params.eventId,
+      events: [],
+    };
+  }
 
-const Experience = (props) => {
-  const eventId = props.match.params.eventId;
-  return (eventId) ? (
-    <Router>
-      <Redirect to={'/location/' + eventId} />
-    </Router>
-  ) : (
-    <h1>Experience</h1>
-  );
-} 
+  componentWillMount() {
+    axios
+      .get('localhost:3001/events')
+      .then(res => {
+        this.setState({
+          events: res.data,
+        });
+      })
+      .catch(err => console.error.bind(err));
+  }
 
+  render() {
+    return this.state.eventId ? (
+      <h1>{this.state.eventId}</h1>
+
+    ) : (
+      <h1>Experience</h1>
+    );
+  }
+}
 
 export default Experience;
