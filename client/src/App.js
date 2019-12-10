@@ -19,12 +19,14 @@ import AppEvent from './components/AppEvent';
 import NotFound from './components/notFound';
 import CreateEvent from './components/CreateEvent';
 import AppFooter from './components/AppFooter';
+import SimpleMap from './components/Maps';
 
 
 function App() {
   return (
     <div className="App">
       <AppNavbar />
+      <SimpleMap />
       <Router>
         <Container>
           <div style={{height: 50 + "px"}}></div>
