@@ -115,33 +115,33 @@ class CreateEvent extends Component {
   }
 
   onChangeContactEmail(e) {
-    this.setState(prevState => {
+    this.setState(prevState => ({
       ...prevState,
         contact: {
           ...prevState.contact,
           email: e.target.value
         }
-    });
+    }));
   }
 
   onChangeContactWebsite(e) {
-    this.setState(prevState => {
+    this.setState(prevState => ({
       ...prevState,
       contact: {
         ...prevState.contact,
         website: e.target.value
-        }
-    });
+      }
+    }));
   }
 
   onChangeContactPhone(e) {
-    this.setState(prevState => {
+    this.setState(prevState => ({
       ...prevState,
       contact: {
         ...prevState.contact,
         phone: e.target.value
       }
-    });
+    }));
   }
 
   onSubmit(e) {
