@@ -44,6 +44,8 @@ class CreateEvent extends Component {
     this.onChangeContactEmail = this.onChangeContactEmail.bind(this);
     this.onChangeContactWebsite = this.onChangeContactWebsite.bind(this);
     this.onChangeContactPhone = this.onChangeContactPhone.bind(this);
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onChangeGenre(e) {
@@ -51,9 +53,10 @@ class CreateEvent extends Component {
       genre: e.target.value,
     });
   }
+
   onChangeImg(e) {
     this.setState({
-      img: e.target.value,
+      img: e.target.file,
     });
   }
 
@@ -76,6 +79,7 @@ class CreateEvent extends Component {
   }
 
   onChangeContactAddressAddress(e) {
+    e.persist();
     this.setState(prevState => ({
       ...prevState,
       contact: {
@@ -89,6 +93,7 @@ class CreateEvent extends Component {
   }
 
   onChangeContactAddressCity(e) {
+    e.persist();
     this.setState(prevState => ({
       ...prevState,
       contact: {
@@ -102,6 +107,7 @@ class CreateEvent extends Component {
   }
 
   onChangeContactAddressPostalCode(e) {
+    e.persist();
     this.setState(prevState => ({
       ...prevState,
       contact: {
@@ -115,6 +121,7 @@ class CreateEvent extends Component {
   }
 
   onChangeContactEmail(e) {
+    e.persist();
     this.setState(prevState => ({
       ...prevState,
         contact: {
@@ -125,6 +132,7 @@ class CreateEvent extends Component {
   }
 
   onChangeContactWebsite(e) {
+    e.persist();
     this.setState(prevState => ({
       ...prevState,
       contact: {
@@ -135,6 +143,7 @@ class CreateEvent extends Component {
   }
 
   onChangeContactPhone(e) {
+    e.persist();
     this.setState(prevState => ({
       ...prevState,
       contact: {
@@ -156,7 +165,7 @@ class CreateEvent extends Component {
       contact: this.state.contact,
     };
 
-    axios.post('localhost:3001/events/post', event)
+    axios.post('localhost:3001/events', event)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -180,7 +189,7 @@ class CreateEvent extends Component {
           <div className="form-group">
             <label>Image: </label>
             <input
-              type="text"
+              type="file"
               required
               className="form-control"
               value={this.state.img}
