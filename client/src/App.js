@@ -26,7 +26,6 @@ function App() {
   return (
     <div className="App">
       <AppNavbar />
-      <SimpleMap />
       <Router>
         <Container>
           <div style={{height: 50 + "px"}}></div>
@@ -42,6 +41,7 @@ function App() {
           </Switch>
        </Container>
       </Router>
+      <SimpleMap />
       <AppFooter />
     </div>
   );

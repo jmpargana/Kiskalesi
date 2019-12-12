@@ -76,56 +76,71 @@ class CreateEvent extends Component {
   }
 
   onChangeContactAddressAddress(e) {
-    this.setState({
+    this.setState(prevState => ({
+      ...prevState,
       contact: {
+        ...prevState.contact,
         address: {
-          address: e.target.value,
-        },
-      },
-    });
+          ...prevState.contact.address,
+          address: e.target.value
+        }
+      }
+    }));
   }
 
   onChangeContactAddressCity(e) {
-    this.setState({
+    this.setState(prevState => ({
+      ...prevState,
       contact: {
+        ...prevState.contact,
         address: {
-          city: e.target.value,
-        },
-      },
-    });
+          ...prevState.contact.address,
+          city: e.target.value
+        }
+      }
+    }));
   }
 
   onChangeContactAddressPostalCode(e) {
-    this.setState({
+    this.setState(prevState => ({
+      ...prevState,
       contact: {
+        ...prevState.contact,
         address: {
-          postalCode: e.target.value,
-        },
-      },
-    });
+          ...prevState.contact.address,
+          postalCode: e.target.value
+        }
+      }
+    }));
   }
 
   onChangeContactEmail(e) {
-    this.setState({
-      contact: {
-        email: e.target.value,
-      },
+    this.setState(prevState => {
+      ...prevState,
+        contact: {
+          ...prevState.contact,
+          email: e.target.value
+        }
     });
   }
 
   onChangeContactWebsite(e) {
-    this.setState({
+    this.setState(prevState => {
+      ...prevState,
       contact: {
-        website: e.target.value,
-      },
+        ...prevState.contact,
+        website: e.target.value
+        }
     });
   }
 
   onChangeContactPhone(e) {
-    this.setState({
+    this.setState(prevState => {
+      ...prevState,
       contact: {
-        phone: e.target.value,
-      },
+        ...prevState.contact,
+        phone: e.target.value
+      }
     });
   }
 

@@ -16,6 +16,7 @@ const eventRouter = require('./routes/events');
  * Set up app
  */
 const app = express();
+const port = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -42,4 +43,4 @@ mongoose
 /**
  * Start app
  */
-app.listen(3001, () => console.log('Launching Server on port 3001'));
+app.listen(port, () => console.log(`Launching Server on port {port}`));
