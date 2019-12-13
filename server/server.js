@@ -5,6 +5,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require("cors");
+const morgan = require('morgan');
+const helmet = require('helmet');
+const jwt = require('express-jwt');
+const jwksRsa = require('jwks-rsa');
+
+
 
 /**
  * Routers for endpoints
@@ -18,13 +24,44 @@ const eventRouter = require('./routes/events');
 const app = express();
 const port = process.env.PORT || 3001;
 
+// enhance security with helmet
+app.use(helmet());
+
+// parse application/json content-type
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+// enable all CORS requests
 app.use(cors());
 
 app.use('/public', express.static('public'));
+
+// Log HTTP requests
+app.use(morgan('combined'));
+
+
+
+
+/**
+ * Auth0 Setup
+ */
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://`+ process.env.DOMAIN + `/.well-known/jwks.json`
+  }),
+
+  // validate the audience and the issuer
+  audience: process.env.CLIENT_ID,
+  issuer: `https://` + process.env.DOMAIN + '/'
+  algorithms: ['RS256']
+});
+
+
 
 
 /**
