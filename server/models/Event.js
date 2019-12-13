@@ -6,28 +6,38 @@ const mongoose = require('mongoose');
 const EventSchema = mongoose.Schema({
   genre: {
     type: String,
-    required: true,
+    required: false,
   },
   img: {
     type: String,
-    required: true,
+    required: false,
   },
   title: {
     type: String,
-    required: true,
+    required: false,
   },
   about: {
     type: String,
-    required: true,
+    required: false,
   },
   date: {
     type: Date,
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,
-    required: true,
+    required: false,
     default: Date.now,
+  },
+  location: {
+    lat: {
+      type: Number,
+      required: false
+    },
+    lng: {
+      type: Number,
+      required: false
+    }
   },
   contact: {
     address: {

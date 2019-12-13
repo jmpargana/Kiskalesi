@@ -11,7 +11,7 @@ class CreateEvent extends Component {
 
     this.state = {
       genre: '',
-      img: '',
+      img: null,
       title: '',
       about: '',
       date: new Date(),
@@ -56,7 +56,7 @@ class CreateEvent extends Component {
 
   onChangeImg(e) {
     this.setState({
-      img: e.target.file,
+      img: e.target.files[0],
     });
   }
 
@@ -118,7 +118,7 @@ class CreateEvent extends Component {
         }
       }
     }));
-  }
+}
 
   onChangeContactEmail(e) {
     e.persist();
@@ -156,16 +156,20 @@ class CreateEvent extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const event = {
-      genre: this.state.genre,
-      img: this.state.img,
-      title: this.state.title,
-      about: this.state.about,
-      date: this.state.date,
-      contact: this.state.contact,
-    };
+    // let form = new FormData();
 
-    axios.post('localhost:3001/events', event)
+    // form.append('img', this.state.img);
+
+    // const event = {
+    //   genre: this.state.genre,
+    //   img: this.state.img,
+    //   title: this.state.title,
+    //   about: this.state.about,
+    //   date: this.state.date,
+    //   contact: this.state.contact,
+    // };
+
+    axios.post('http://127.0.0.1:3001/events/post', this.state)
       .then(res => console.log(res.data));
 
     window.location = '/';
@@ -192,7 +196,6 @@ class CreateEvent extends Component {
               type="file"
               required
               className="form-control"
-              value={this.state.img}
               onChange={this.onChangeImg}
             />
           </div>
@@ -270,9 +273,7 @@ class CreateEvent extends Component {
             <label>Contact Phone: </label>
             <input
               type="text"
-              required
               className="form-control"
-              value={this.state.contact.phone}
               onChange={this.onChangeContactPhone}
             />
           </div>
@@ -292,6 +293,8 @@ class CreateEvent extends Component {
               value="Create New Event"
               className="btn btn-primary"
             />
+          </div>
+          <div style={{marginBottom: '100px'}} >
           </div>
         </form>
       </div>

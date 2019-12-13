@@ -8,7 +8,7 @@ import {
   Route,
   BrowserRouter as Router,
   Switch
-} from 'react-router-dom'; 
+} from 'react-router-dom';
 
 import Agenda from './components/Agenda';
 import Home from './components/Home';
@@ -19,7 +19,7 @@ import AppEvent from './components/AppEvent';
 import NotFound from './components/notFound';
 import CreateEvent from './components/CreateEvent';
 import AppFooter from './components/AppFooter';
-import SimpleMap from './components/Maps';
+// import SimpleMap from './components/Maps';
 
 
 function App() {
@@ -41,7 +41,6 @@ function App() {
           </Switch>
        </Container>
       </Router>
-      <SimpleMap />
       <AppFooter />
     </div>
   );

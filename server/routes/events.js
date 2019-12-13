@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.post('/', upload.single('img'), (req, res) => {
+router.post('/post', upload.single('img'), (req, res) => {
   const url = req.protocol + '://' + req.get('host');
   const newEvent = new Event({
     genre: req.body.genre,
