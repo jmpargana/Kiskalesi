@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
+import auth0Client from './Auth';
 
 
 
@@ -169,7 +170,9 @@ class CreateEvent extends Component {
     //   contact: this.state.contact,
     // };
 
-    axios.post('http://127.0.0.1:3001/events/post', this.state)
+    axios.post('http://127.0.0.1:3001/events/post', this.state, {
+      headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
+    })
       .then(res => console.log(res.data));
 
     window.location = '/';

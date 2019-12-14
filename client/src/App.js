@@ -22,6 +22,7 @@ import AppFooter from './components/AppFooter';
 // import SimpleMap from './components/Maps';
 import NavBar from './components/NavBar';
 import Callback from './components/Callback';
+import SecuredRoute from './components/SecuredRoute';
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
             <Route path="/infos/:eventId?" component={Infos} />
             <Route path="/location/:eventId" component={AppEvent} />
             <Route exact path='/callback' component={Callback} /> 
-            <Route path="/admin" component={CreateEvent} />
+            <SecuredRoute path='/admin' component={CreateEvent} />
             <Route component={NotFound} />
           </Switch>
        </Container>
