@@ -25,6 +25,12 @@ import Callback from './components/Callback';
 import SecuredRoute from './components/SecuredRoute';
 import auth0Client from './components/Auth';
 
+
+// translation hoc
+import { withNamespaces } from 'react-i18next';
+
+
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,6 +54,7 @@ class App extends Component {
   }
 
   render() {
+    const { t } = this.props;
     return (
       <div className="App">
         <NavBar />
