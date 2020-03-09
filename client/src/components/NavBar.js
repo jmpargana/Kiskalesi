@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import auth0Client from './Auth';
+import {Translation} from 'react-i18next';
 
 const NavBar = props => {
   const signOut = () => {
@@ -9,10 +10,22 @@ const NavBar = props => {
   };
 
   return (
-    <nav className="navbar navbar-dark bg-primary fixed-top">
-      <Link className="navbar-brand" to="/">
-        Kiskalesi
-      </Link>
+    <nav className="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+          <Link className="navbar-brand" to="/">
+            <Translation>{(t, {i18n}) => <div>{t('Title')}</div>}</Translation>
+          </Link>
+      <ul className="nav navbar-nav">
+        <li className="nav-item">
+          <Link className="nav-link" to="/agenda">
+            <Translation>{(t, {i18n}) => <div>{t('Agenda')}</div>}</Translation>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/admin">
+            <Translation>{(t, {i18n}) => <div>{t('Admin')}</div>}</Translation>
+          </Link>
+        </li>
+      </ul>
       {!auth0Client.isAuthenticated() && (
         <button className="btn btn-dark" onClick={auth0Client.signIn}>
           Sign In

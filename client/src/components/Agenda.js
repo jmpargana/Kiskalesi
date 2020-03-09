@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Redirect} from 'react-router-dom';
+import { Translation } from 'react-i18next';
 
 class Agenda extends Component {
   constructor(props) {
@@ -32,7 +33,11 @@ class Agenda extends Component {
       </Router>
     ) : (
       <div>
-        <h1>Agenda</h1>
+        <Translation>
+          {
+            (t, { i18n }) => <h1>{t("Agenda")}</h1>
+          }
+        </Translation>
         {this.state.events.map((event, i) => (
           <div key={i}>
             <h2 key={"title"+i}>{event.title}</h2>
