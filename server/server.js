@@ -58,7 +58,7 @@ const checkJwt = jwt({
   // validate the audience and the issuer
   audience: process.env.CLIENT_ID,
   issuer: `https://` + process.env.DOMAIN + '/'
-  algorithms: ['RS256']
+  // algorithms: ['RS256']
 });
 
 
@@ -85,4 +85,4 @@ mongoose
 /**
  * Start app
  */
-app.listen(port, () => console.log(`Launching Server on port {port}`));
+app.listen(port, () => console.log(`Launching Server on port ${port}`));
