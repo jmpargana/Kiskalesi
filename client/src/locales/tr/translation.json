@@ -1,5 +1,8 @@
 {
   "Welcome": "Höşgeldinis Kızkalesi'ye",
   "Agenda": "Gündem",
-  "Title": "Kızkalesi"
+  "Admin": "yönetim",
+  "Title": "Kızkalesi",
+  "Language": "Dil",
+  "CreateEvent": "etkinlik oluşturmak"
 }

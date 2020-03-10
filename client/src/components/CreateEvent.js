@@ -3,8 +3,8 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 import auth0Client from './Auth';
-
-
+import {Translation} from 'react-i18next';
+import M from 'materialize-css';
 
 class CreateEvent extends Component {
   constructor(props) {
@@ -49,6 +49,10 @@ class CreateEvent extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentDidMount() {
+    M.AutoInit();
+  }
+
   onChangeGenre(e) {
     this.setState({
       genre: e.target.value,
@@ -87,9 +91,9 @@ class CreateEvent extends Component {
         ...prevState.contact,
         address: {
           ...prevState.contact.address,
-          address: e.target.value
-        }
-      }
+          address: e.target.value,
+        },
+      },
     }));
   }
 
@@ -101,9 +105,9 @@ class CreateEvent extends Component {
         ...prevState.contact,
         address: {
           ...prevState.contact.address,
-          city: e.target.value
-        }
-      }
+          city: e.target.value,
+        },
+      },
     }));
   }
 
@@ -115,20 +119,20 @@ class CreateEvent extends Component {
         ...prevState.contact,
         address: {
           ...prevState.contact.address,
-          postalCode: e.target.value
-        }
-      }
+          postalCode: e.target.value,
+        },
+      },
     }));
-}
+  }
 
   onChangeContactEmail(e) {
     e.persist();
     this.setState(prevState => ({
       ...prevState,
-        contact: {
-          ...prevState.contact,
-          email: e.target.value
-        }
+      contact: {
+        ...prevState.contact,
+        email: e.target.value,
+      },
     }));
   }
 
@@ -138,8 +142,8 @@ class CreateEvent extends Component {
       ...prevState,
       contact: {
         ...prevState.contact,
-        website: e.target.value
-      }
+        website: e.target.value,
+      },
     }));
   }
 
@@ -149,8 +153,8 @@ class CreateEvent extends Component {
       ...prevState,
       contact: {
         ...prevState.contact,
-        phone: e.target.value
-      }
+        phone: e.target.value,
+      },
     }));
   }
 
@@ -170,9 +174,10 @@ class CreateEvent extends Component {
       contact: this.state.contact,
     };
 
-    axios.post('http://127.0.0.1:3001/events/post', event, {
-      headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
-    })
+    axios
+      .post('http://127.0.0.1:3001/events/post', event, {
+        headers: {Authorization: `Bearer ${auth0Client.getIdToken()}`},
+      })
       .then(res => console.log(res.data));
 
     // window.location = '/admin';
@@ -181,107 +186,134 @@ class CreateEvent extends Component {
   render() {
     return (
       <div>
-        <h3>Create New Event</h3>
+        <h3>
+          <Translation>
+            {(t, {i18n}) => <div>{t('CreateEvent')}</div>}
+          </Translation>
+        </h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
-            <label>Genre: </label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              value={this.state.genre}
+          <div className="input-field col s12">
+            <select
               onChange={this.onChangeGenre}
-            />
+              value={this.state.genre}
+              required>
+              <option value="" disabled selected>
+                Choose your option
+              </option>
+              <optgroup label="Explore">
+                <option value="Restaurants">Restaurants</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Sailing">Sailling</option>
+              </optgroup>
+              <optgroup label="Experience">
+                <option value="Museums">Museums</option>
+                <option value="Attractions">Attract</option>
+                <option value="ParksGardens">Parks and Gardens</option>
+              </optgroup>
+              <optgroup label="Infos">
+                <option value="Hotels">Hotels</option>
+                <option value="HowToGet">How to get there</option>
+                <option value="Map">Map</option>
+              </optgroup>
+            </select>
+            <label>Genre</label>
           </div>
-          <div className="form-group">
-            <label>Image: </label>
-            <input
-              type="file"
-              required
-              className="form-control"
-              onChange={this.onChangeImg}
-            />
+          <div className="file-field input-field">
+            <div className="btn">
+              <span>File</span>
+              <input type="file" onChage={this.onChangeImg} />
+            </div>
+            <div className="file-path-wrapper">
+              <input type="file-path validate" type="text" />
+            </div>
           </div>
-          <div className="form-group">
-            <label>Title: </label>
+          <div className="input-field">
             <input
               type="text"
+              id="title"
               required
-              className="form-control"
+              className="validate"
               value={this.state.title}
               onChange={this.onChangeTitle}
             />
+            <label for="title">Title</label>
           </div>
-          <div className="form-group">
-            <label>About: </label>
+          <div className="input-field">
             <input
               type="text"
+              id="about"
               required
-              className="form-control"
+              className="validate"
               value={this.state.about}
               onChange={this.onChangeAbout}
             />
+            <label for="about">About </label>
           </div>
-          <div className="form-group">
-            <label>Contact Address Adress: </label>
+          <div className="input-field">
             <input
               type="text"
+              id="contact-adress-adress"
               required
-              className="form-control"
+              className="validate"
               value={this.state.contact.address.address}
               onChange={this.onChangeContactAddressAddress}
             />
+            <label for="contact-adress-adress">Contact Address Adress</label>
           </div>
-          <div className="form-group">
-            <label>Contact Address City: </label>
+          <div className="input-field">
             <input
               type="text"
+              id="contact-adress-city"
               required
-              className="form-control"
+              className="validate"
               value={this.state.contact.address.city}
               onChange={this.onChangeContactAddressCity}
             />
+            <label for="contact-adress-city">Contact Address City</label>
           </div>
-          <div className="form-group">
-            <label>Contact Address Postal Code: </label>
+          <div className="input-field">
             <input
               type="text"
+              id="contact-adress-postal-code"
               required
-              className="form-control"
+              className="validate"
               value={this.state.contact.address.postalCode}
               onChange={this.onChangeContactAddressPostalCode}
             />
+            <label for="contact-adress-postal-code">Contact Address Postal Code</label>
           </div>
-          <div className="form-group">
-            <label>Contact Email: </label>
+          <div className="input-field">
             <input
               type="text"
+              id="contact-email"
               required
-              className="form-control"
+              className="validate"
               value={this.state.contact.email}
               onChange={this.onChangeContactEmail}
             />
+            <label for="contact-email">Contact Email: </label>
           </div>
-          <div className="form-group">
-            <label>Contact Website: </label>
+          <div className="input-field">
             <input
               type="text"
               required
-              className="form-control"
+              id="contact-website"
+              className="validate"
               value={this.state.contact.website}
               onChange={this.onChangeContactWebsite}
             />
+            <label for="contact-website">Contact Website: </label>
           </div>
-          <div className="form-group">
-            <label>Contact Phone: </label>
+          <div className="input-field">
             <input
               type="text"
+              id="contact-phone"
               className="form-control"
               onChange={this.onChangeContactPhone}
             />
+            <label for="contact-phone">Contact Phone: </label>
           </div>
-          <div className="form-group">
-            <label>Date: </label>
+          <div className="input-field">
             <div>
               <DatePicker
                 selected={this.state.date}
@@ -290,15 +322,14 @@ class CreateEvent extends Component {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="input-field">
             <input
               type="submit"
               value="Create New Event"
               className="btn btn-primary"
             />
           </div>
-          <div style={{marginBottom: '100px'}} >
-          </div>
+          <div style={{marginBottom: '100px'}}></div>
         </form>
       </div>
     );

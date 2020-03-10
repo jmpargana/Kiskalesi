@@ -1,5 +1,8 @@
 {
   "Welcome": "Welcome to Kizkalesi",
   "Agenda": "Agenda",
-  "Title": "Kizkalesi"
+  "Title": "Kizkalesi",
+  "Admin": "Admin",
+  "Language": "Language",
+  "CreateEvent": "Create Event"
 }

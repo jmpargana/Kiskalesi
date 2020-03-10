@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 
-import i18n from './i18n';
-
 import {
   Route,
   Switch,
@@ -51,21 +49,12 @@ class App extends Component {
     this.setState({checkingSession: false});
   }
 
-  handleChange(lng) {
-    i18n.changeLanguage(lng);
-  }
 
   render() {
     return (
       <div className="App">
         <NavBar />
         <Container>
-          <div style={{height: 100 + 'px'}}></div>
-          <div>
-            <button onClick={() => this.handleChange('en')}>en</button>
-            <button onClick={() => this.handleChange('tr')}>tr</button>
-            <button onClick={() => this.handleChange('ru')}>ru</button>
-          </div>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/agenda/:eventId?" component={Agenda} />
