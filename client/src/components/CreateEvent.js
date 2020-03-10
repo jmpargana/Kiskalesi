@@ -157,25 +157,25 @@ class CreateEvent extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    // let form = new FormData();
+    let form = new FormData();
 
-    // form.append('img', this.state.img);
+    form.append('img', this.state.img);
 
-    // const event = {
-    //   genre: this.state.genre,
-    //   img: this.state.img,
-    //   title: this.state.title,
-    //   about: this.state.about,
-    //   date: this.state.date,
-    //   contact: this.state.contact,
-    // };
+    const event = {
+      genre: this.state.genre,
+      // img: this.state.img,
+      title: this.state.title,
+      about: this.state.about,
+      date: this.state.date,
+      contact: this.state.contact,
+    };
 
-    axios.post('http://127.0.0.1:3001/events/post', this.state, {
+    axios.post('http://127.0.0.1:3001/events/post', event, {
       headers: { 'Authorization': `Bearer ${auth0Client.getIdToken()}` }
     })
       .then(res => console.log(res.data));
 
-    window.location = '/';
+    // window.location = '/admin';
   }
 
   render() {

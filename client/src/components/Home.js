@@ -1,6 +1,7 @@
 import React from 'react';
 import { Translation } from 'react-i18next';
-import SimpleMap from './Maps';
+// import SimpleMap from './Maps';
+import SimpleMap from './testmap';
 
 
 
