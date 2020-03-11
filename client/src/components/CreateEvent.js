@@ -13,6 +13,7 @@ class CreateEvent extends Component {
     this.state = {
       genre: '',
       img: null,
+      imgName: '',
       title: '',
       about: '',
       date: new Date(),
@@ -62,6 +63,7 @@ class CreateEvent extends Component {
   onChangeImg(e) {
     this.setState({
       img: e.target.files[0],
+      imgName: e.target.files[0].name,
     });
   }
 
@@ -191,145 +193,189 @@ class CreateEvent extends Component {
             {(t, {i18n}) => <div>{t('CreateEvent')}</div>}
           </Translation>
         </h3>
+          <div style={{marginTop: '5%'}}></div>
         <form onSubmit={this.onSubmit}>
-          <div className="input-field col s12">
-            <select
-              onChange={this.onChangeGenre}
-              value={this.state.genre}
-              required>
-              <option value="" disabled selected>
-                Choose your option
-              </option>
-              <optgroup label="Explore">
-                <option value="Restaurants">Restaurants</option>
-                <option value="Shopping">Shopping</option>
-                <option value="Sailing">Sailling</option>
-              </optgroup>
-              <optgroup label="Experience">
-                <option value="Museums">Museums</option>
-                <option value="Attractions">Attract</option>
-                <option value="ParksGardens">Parks and Gardens</option>
-              </optgroup>
-              <optgroup label="Infos">
-                <option value="Hotels">Hotels</option>
-                <option value="HowToGet">How to get there</option>
-                <option value="Map">Map</option>
-              </optgroup>
-            </select>
-            <label>Genre</label>
-          </div>
-          <div className="file-field input-field">
-            <div className="btn">
-              <span>File</span>
-              <input type="file" onChage={this.onChangeImg} />
+          <div className="row">
+            <div className="col s6" style={{marginTop: '5%', marginRight: '5%'}}>
+              <div className="row">
+                <div className="input-field col s12 m6">
+                  <select
+                    onChange={this.onChangeGenre}
+                    value={this.state.genre}
+                    required>
+                    <option value="" disabled>
+                      Choose your option
+                    </option>
+                    <optgroup label="Explore">
+                      <option value="Restaurants">Restaurants</option>
+                      <option value="Shopping">Shopping</option>
+                      <option value="Sailing">Sailling</option>
+                    </optgroup>
+                    <optgroup label="Experience">
+                      <option value="Museums">Museums</option>
+                      <option value="Attractions">Attract</option>
+                      <option value="ParksGardens">Parks and Gardens</option>
+                    </optgroup>
+                    <optgroup label="Infos">
+                      <option value="Hotels">Hotels</option>
+                      <option value="HowToGet">How to get there</option>
+                      <option value="Map">Map</option>
+                    </optgroup>
+                  </select>
+                  <label>Genre</label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="file-field input-field col s12">
+                  <div className="btn">
+                    <span>Image</span>
+                    <input type="file" onChange={this.onChangeImg} />
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    type="text"
+                    id="title"
+                    required
+                    className="validate"
+                    value={this.state.title}
+                    onChange={this.onChangeTitle}
+                  />
+                  <label htmlFor="title">Title</label>
+                </div>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    type="text"
+                    id="about"
+                    required
+                    className="validate"
+                    value={this.state.about}
+                    onChange={this.onChangeAbout}
+                  />
+                  <label htmlFor="about">About </label>
+                </div>
+              </div>
+              <div clasName="row">
+
+                <div className="input-field col s6">
+                  <input
+                    type="submit"
+                    value="Create New Event"
+                    className="btn btn-primary"
+                  />
+                </div>
+                <div className="input-field col s6">
+                  <div className="col s12">
+                    <DatePicker
+                      selected={this.state.date}
+                      onChange={this.onChangeDate}
+                    />
+                  </div>
+                </div>
+</div>
             </div>
-            <div className="file-path-wrapper">
-              <input type="file-path validate" type="text" />
-            </div>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="title"
-              required
-              className="validate"
-              value={this.state.title}
-              onChange={this.onChangeTitle}
-            />
-            <label for="title">Title</label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="about"
-              required
-              className="validate"
-              value={this.state.about}
-              onChange={this.onChangeAbout}
-            />
-            <label for="about">About </label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="contact-adress-adress"
-              required
-              className="validate"
-              value={this.state.contact.address.address}
-              onChange={this.onChangeContactAddressAddress}
-            />
-            <label for="contact-adress-adress">Contact Address Adress</label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="contact-adress-city"
-              required
-              className="validate"
-              value={this.state.contact.address.city}
-              onChange={this.onChangeContactAddressCity}
-            />
-            <label for="contact-adress-city">Contact Address City</label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="contact-adress-postal-code"
-              required
-              className="validate"
-              value={this.state.contact.address.postalCode}
-              onChange={this.onChangeContactAddressPostalCode}
-            />
-            <label for="contact-adress-postal-code">Contact Address Postal Code</label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="contact-email"
-              required
-              className="validate"
-              value={this.state.contact.email}
-              onChange={this.onChangeContactEmail}
-            />
-            <label for="contact-email">Contact Email: </label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              required
-              id="contact-website"
-              className="validate"
-              value={this.state.contact.website}
-              onChange={this.onChangeContactWebsite}
-            />
-            <label for="contact-website">Contact Website: </label>
-          </div>
-          <div className="input-field">
-            <input
-              type="text"
-              id="contact-phone"
-              className="form-control"
-              onChange={this.onChangeContactPhone}
-            />
-            <label for="contact-phone">Contact Phone: </label>
-          </div>
-          <div className="input-field">
-            <div>
-              <DatePicker
-                selected={this.state.date}
-                onChange={this.onChangeDate}
-              />
+
+            <div className="row">
+              <div className="col s6 m6">
+                <div className="card blue-grey darken-2">
+                  <div className="card-content white-text">
+                    <span className="card-title">Contact Data</span>
+
+                    <div className="row">
+                      <div className="input-field col s12">
+                        <i class="material-icons prefix">house</i>
+                        <input
+                          type="text"
+                          id="contact-adress-adress"
+                          required
+                          className="validate"
+                          value={this.state.contact.address.address}
+                          onChange={this.onChangeContactAddressAddress}
+                        />
+                        <label htmlFor="contact-adress-adress">Adress</label>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="input-field col s6">
+                        <i class="material-icons prefix">place</i>
+                        <input
+                          type="text"
+                          id="contact-adress-city"
+                          required
+                          className="validate"
+                          value={this.state.contact.address.city}
+                          onChange={this.onChangeContactAddressCity}
+                        />
+                        <label htmlFor="contact-adress-city">City</label>
+                      </div>
+                      <div className="input-field col s6">
+                        <input
+                          type="text"
+                          id="contact-adress-postal-code"
+                          required
+                          className="validate"
+                          value={this.state.contact.address.postalCode}
+                          onChange={this.onChangeContactAddressPostalCode}
+                        />
+                        <label htmlFor="contact-adress-postal-code">
+                          Postal Code
+                        </label>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="input-field col s12">
+                        <i class="material-icons prefix">email</i>
+                        <input
+                          type="email"
+                          id="contact-email"
+                          required
+                          className="validate"
+                          value={this.state.contact.email}
+                          onChange={this.onChangeContactEmail}
+                        />
+                        <label htmlFor="contact-email">Email</label>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="input-field col s12">
+                        <i class="material-icons prefix">laptop</i>
+                        <input
+                          type="text"
+                          required
+                          id="contact-website"
+                          className="validate"
+                          value={this.state.contact.website}
+                          onChange={this.onChangeContactWebsite}
+                        />
+                        <label htmlFor="contact-website">Website</label>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="input-field col s12">
+                        <i class="material-icons prefix">phone</i>
+                        <input
+                          type="text"
+                          id="contact-phone"
+                          className="form-control"
+                          onChange={this.onChangeContactPhone}
+                        />
+                        <label htmlFor="contact-phone">Phone</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="input-field">
-            <input
-              type="submit"
-              value="Create New Event"
-              className="btn btn-primary"
-            />
-          </div>
-          <div style={{marginBottom: '100px'}}></div>
+          <div style={{marginBottom: '20%'}}></div>
         </form>
       </div>
     );

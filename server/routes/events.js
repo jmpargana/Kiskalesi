@@ -25,6 +25,7 @@ const storage = multer.diskStorage({
 var upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
+    consol.loge("Called uploader")
     if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
       cb(null, true);
     } else {
@@ -50,7 +51,7 @@ router.post('/post', upload.single('img'), (req, res) => {
   const url = req.protocol + '://' + req.get('host');
   const newEvent = new Event({
     genre: req.body.genre,
-    img: url + '/public/' + req.file.filename,
+    img: url + '/public/' + req.body._id,
     title: req.body.title,
     about: req.body.about,
     date: req.body.date,

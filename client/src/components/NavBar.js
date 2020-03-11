@@ -39,6 +39,29 @@ class NavBar extends React.Component {
             </a>
           </li>
         </ul>
+        <ul id="dropdown-explore" className="dropdown-content">
+          <li>
+            <Link to="/shopping">
+              <Translation>
+                {(t, {i18n}) => <div>{t('Shopping')}</div>}
+              </Translation>
+            </Link>
+          </li>
+          <li>
+            <Link to="/restaurants">
+              <Translation>
+                {(t, {i18n}) => <div>{t('Restaurants')}</div>}
+              </Translation>
+            </Link>
+          </li>
+          <li>
+            <Link to="/sailing">
+              <Translation>
+                {(t, {i18n}) => <div>{t('Sailing')}</div>}
+              </Translation>
+            </Link>
+          </li>
+        </ul>
         <nav>
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/">
@@ -51,13 +74,6 @@ class NavBar extends React.Component {
                 <Link to="/agenda">
                   <Translation>
                     {(t, {i18n}) => <div>{t('Agenda')}</div>}
-                  </Translation>
-                </Link>
-              </li>
-              <li>
-                <Link to="/admin">
-                  <Translation>
-                    {(t, {i18n}) => <div>{t('Admin')}</div>}
                   </Translation>
                 </Link>
               </li>
@@ -99,6 +115,12 @@ class NavBar extends React.Component {
                   </div>
                 </li>
               )}
+
+              <li>
+                <Link to="/admin">
+                  <i className="material-icons right">settings</i>
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>
