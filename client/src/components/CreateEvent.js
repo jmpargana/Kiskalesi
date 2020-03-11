@@ -262,7 +262,7 @@ class CreateEvent extends Component {
                   <label htmlFor="about">About </label>
                 </div>
               </div>
-              <div clasName="row">
+              <div className="row">
 
                 <div className="input-field col s6">
                   <input
@@ -290,7 +290,7 @@ class CreateEvent extends Component {
 
                     <div className="row">
                       <div className="input-field col s12">
-                        <i class="material-icons prefix">house</i>
+                        <i className="material-icons prefix">house</i>
                         <input
                           type="text"
                           id="contact-adress-adress"
@@ -304,7 +304,7 @@ class CreateEvent extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field col s6">
-                        <i class="material-icons prefix">place</i>
+                        <i className="material-icons prefix">place</i>
                         <input
                           type="text"
                           id="contact-adress-city"
@@ -331,7 +331,7 @@ class CreateEvent extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field col s12">
-                        <i class="material-icons prefix">email</i>
+                        <i className="material-icons prefix">email</i>
                         <input
                           type="email"
                           id="contact-email"
@@ -345,7 +345,7 @@ class CreateEvent extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field col s12">
-                        <i class="material-icons prefix">laptop</i>
+                        <i className="material-icons prefix">laptop</i>
                         <input
                           type="text"
                           required
@@ -359,7 +359,7 @@ class CreateEvent extends Component {
                     </div>
                     <div className="row">
                       <div className="input-field col s12">
-                        <i class="material-icons prefix">phone</i>
+                        <i className="material-icons prefix">phone</i>
                         <input
                           type="text"
                           id="contact-phone"
