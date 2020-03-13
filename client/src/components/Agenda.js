@@ -29,7 +29,7 @@ class Agenda extends Component {
         <Redirect to={'/location/' + eventId} />
       </Router>
     ) : (
-      <div>
+      <div className="container">
         <Translation>{(t, {i18n}) => <h1>{t('Agenda')}</h1>}</Translation>
         {this.state.events.map((event, i) => (
           <div key={i}>

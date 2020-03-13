@@ -181,7 +181,7 @@ class CreateEvent extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h3>
           <Translation>
             {(t, {i18n}) => <div>{t('CreateEvent')}</div>}
@@ -369,7 +369,7 @@ class CreateEvent extends Component {
             </div>
           </div>
 
-          <div style={{marginBottom: '20%'}}></div>
+          <div style={{marginBottom: '10%'}}></div>
         </form>
       </div>
     );

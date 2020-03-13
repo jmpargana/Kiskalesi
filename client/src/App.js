@@ -54,7 +54,6 @@ class App extends Component {
     return (
       <div className="App">
         <NavBar />
-        <Container>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/agenda/:eventId?" component={Agenda} />
@@ -69,7 +68,6 @@ class App extends Component {
             />
             <Route component={NotFound} />
           </Switch>
-        </Container>
       <AppFooter />
       </div>
     );
