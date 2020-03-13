@@ -13,7 +13,6 @@ class CreateEvent extends Component {
     this.state = {
       genre: '',
       img: null,
-      imgName: '',
       title: '',
       about: '',
       date: new Date(),
@@ -63,7 +62,6 @@ class CreateEvent extends Component {
   onChangeImg(e) {
     this.setState({
       img: e.target.files[0],
-      imgName: e.target.files[0].name,
     });
   }
 
@@ -166,18 +164,14 @@ class CreateEvent extends Component {
     let form = new FormData();
 
     form.append('img', this.state.img);
-
-    const event = {
-      genre: this.state.genre,
-      // img: this.state.img,
-      title: this.state.title,
-      about: this.state.about,
-      date: this.state.date,
-      contact: this.state.contact,
-    };
+    form.append('genre', this.state.genre);
+    form.append('title', this.state.title);
+    form.append('about', this.state.about);
+    form.append('date', this.state.date);
+    form.append('contact', this.state.contact);
 
     axios
-      .post('http://127.0.0.1:3001/events/post', event, {
+      .post('http://127.0.0.1:3001/events/post', form, {
         headers: {Authorization: `Bearer ${auth0Client.getIdToken()}`},
       })
       .then(res => console.log(res.data));
