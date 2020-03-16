@@ -62,7 +62,7 @@ class NavBar extends React.Component {
             </Link>
           </li>
         </ul>
-        <nav>
+        <nav className="cyan darken-4">
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/">
               <Translation>
