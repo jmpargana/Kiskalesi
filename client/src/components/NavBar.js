@@ -21,7 +21,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="navbar-fixed">
         <ul id="dropdown-languages" className="dropdown-content">
           <li>
             <a href="/#" onClick={() => this.handleChange('en')}>
@@ -62,7 +62,7 @@ class NavBar extends React.Component {
             </Link>
           </li>
         </ul>
-        <nav className="cyan darken-4">
+        <nav className="cyan darken-3">
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/">
               <Translation>

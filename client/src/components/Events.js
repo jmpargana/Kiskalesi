@@ -4,8 +4,8 @@ import {Translation} from 'react-i18next';
 export const Events = props => {
   let subLists = [];
 
-  for (var i = 0; i < props.events.length; i += 3)
-    subLists.push(props.events.slice(i, i + 3));
+  for (var i = 0; i < props.events.length; i += 4)
+    subLists.push(props.events.slice(i, i + 4));
 
   return (
     <Translation>
