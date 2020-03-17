@@ -11,10 +11,14 @@ class CreateEvent extends Component {
     super(props);
 
     this.state = {
-      genre: '',
       img: null,
-      title: '',
-      about: '',
+      genre: '',
+      titleEn: '',
+      aboutEn: '',
+      titleRu: '',
+      aboutRu: '',
+      titleTr: '',
+      aboutTr: '',
       date: new Date(),
       contact: {
         address: {
@@ -176,7 +180,7 @@ class CreateEvent extends Component {
       })
       .then(res => console.log(res.data));
 
-    // window.location = '/admin';
+    window.location = '/';
   }
 
   render() {

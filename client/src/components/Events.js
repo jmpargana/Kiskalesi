@@ -16,7 +16,7 @@ export const Events = props => {
             <div key={'row' + i} className="row">
               {chunks.map((event, j) => (
                 <div key={'col' + i + j} className="col s3">
-                  <div className="card hoverable">
+                  <div className="card hoverable" onClick={() => window.location = "/location/" + event._id}>
                     <div className="card-image">
                       <img src="public/ist3.jpg" alt={event.title} />
                     </div>

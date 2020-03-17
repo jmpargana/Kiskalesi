@@ -63,7 +63,7 @@ router.post('/post', upload.single('img'), (req, res) => {
 
 router.get('/:id', (req, res) => {
   Event.findById(req.params.id)
-    .then(event => res.json(exercise))
+    .then(event => res.json(event))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -80,10 +80,10 @@ router.put('/:id', (req, res) => {
       event.img = req.body.img;
       event.title = req.body.title;
       event.about = req.body.about;
-      event.date = req.body.about;
+      event.date = req.body.date;
       event.contact = req.body.contact;
 
-      exercise
+      event
         .save()
         .then(() => res.json('Exercise updated'))
         .catch(err => res.status(400).json('Error: ' + err));
