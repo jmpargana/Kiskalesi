@@ -3,6 +3,7 @@ import EventContact from './EventContact';
 import axios from 'axios';
 import moment from 'moment';
 import auth0Client from './Auth';
+import SimpleMap from './testmap';
 
 class AppEvent extends Component {
   constructor(props) {
@@ -43,7 +44,14 @@ class AppEvent extends Component {
       <>
         <div className="parallax-container">
           <div className="parralax">
-            <img src={event.img} alt={event.title} style={{width: '100%'}} />
+            <div className="row">
+              <div className="col no-padding">
+                <img src={event.img} alt={event.title} style={{width: '100%'}} />
+              </div>
+              <div>
+                <SimpleMap height="500px" width="600px" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -52,7 +60,7 @@ class AppEvent extends Component {
             <div className="col s6">
               <h2>{event.title}</h2>
               <p>{event.about}</p>
-              <p>{moment(event.date).format('MMMM Do YYYY, h:mm:ss a')}</p>
+              <p>{moment(event.date).format('MMMM Do YYYY')}</p>
             </div>
             <div className="col s6">
               <EventContact event={event.contact} />
