@@ -48,13 +48,14 @@ router.get('/', (req, res) => {
 
 router.post('/post', upload.single('img'), (req, res) => {
   const url = req.protocol + '://' + req.get('host');
+
   const newEvent = new Event({
     genre: req.body.genre,
     img: url + '/public/' + req.file.filename,
     title: req.body.title,
     about: req.body.about,
     date: req.body.date,
-    contact: req.body.contact,
+    contact: JSON.parse(req.body.contact),
   })
     .save()
     .then(() => res.json('Adding new event'))

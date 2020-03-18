@@ -172,7 +172,11 @@ class CreateEvent extends Component {
     form.append('title', this.state.title);
     form.append('about', this.state.about);
     form.append('date', this.state.date);
-    form.append('contact', this.state.contact);
+
+    form.append('contact', JSON.stringify(this.state.contact));
+
+    console.log(form);
+    console.log(this.state.contact);
 
     axios
       .post('http://127.0.0.1:3001/events/post', form, {
@@ -180,7 +184,7 @@ class CreateEvent extends Component {
       })
       .then(res => console.log(res.data));
 
-    window.location = '/';
+    // window.location = '/';
   }
 
   render() {

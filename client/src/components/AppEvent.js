@@ -2,13 +2,7 @@ import React, {Component} from 'react';
 import EventContact from './EventContact';
 import axios from 'axios';
 import moment from 'moment';
-
-var contact = {
-  adress: 'Agnietenstraat 13512 XA Utrecht',
-  mail: 'email@google.com',
-  website: 'https://testing.com',
-  phone: '(+31) 030 23232323',
-};
+import auth0Client from './Auth';
 
 class AppEvent extends Component {
   constructor(props) {
@@ -16,6 +10,8 @@ class AppEvent extends Component {
     this.state = {
       event: {},
     };
+
+    this.deleteEvent = this.deleteEvent.bind(this)
   }
 
   componentDidMount() {
@@ -31,6 +27,14 @@ class AppEvent extends Component {
         });
       })
       .catch(err => console.log(err));
+  }
+
+  deleteEvent() {
+        console.log("Deleting event");
+    // axios
+    //   .delete(
+
+    //   )
   }
 
   render() {
@@ -55,6 +59,14 @@ class AppEvent extends Component {
             </div>
           </div>
         </div>
+
+        {auth0Client.isAuthenticated() && (
+          <div className="fixed-action-btn">
+            <a href="#0" className="btn-floating btn-large red" onClick={this.deleteEvent}>
+              <i className="large material-icons">delete</i>
+            </a>
+          </div>
+        )}
       </>
     );
   }
