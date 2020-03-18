@@ -19,20 +19,20 @@ class NavBar extends React.Component {
     return (
       <div className="navbar-fixed">
         <LanguageChoice />
-        <nav className="cyan darken-3">
+        <nav className="white">
           <Translation>
             {(t, {i18n}) => (
               <div className="nav-wrapper">
-                <Link className="brand-logo" to="/">
+                <Link className="brand-logo teal-text" to="/">
                   {t('Title')}
                 </Link>
                 <ul className="right hide-on-med-and-down">
                   <li>
-                    <Link to="/agenda">{t('Agenda')}</Link>
+                    <Link className="teal-text" to="/agenda">{t('Agenda')}</Link>
                   </li>
                   <li>
                     <a
-                      className="dropdown-trigger"
+                      className="dropdown-trigger teal-text"
                       data-target="dropdown-languages"
                       href="/#">
                       {t('Language')}
@@ -40,7 +40,7 @@ class NavBar extends React.Component {
                     </a>
                   </li>
                   <li>
-                    <Link to="/admin">
+                    <Link to="/admin" className="teal-text">
                       <i className="material-icons right">settings</i>
                     </Link>
                   </li>

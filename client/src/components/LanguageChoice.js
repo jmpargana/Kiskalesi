@@ -11,7 +11,7 @@ class LanguageChoice extends React.Component {
     return (
       <ul id="dropdown-languages" className="dropdown-content">
         {['en', 'tr', 'ru'].map(lang => (
-          <li>
+          <li key={lang}>
             <a href="#0" onClick={() => this.handleChange(lang)}>
               {lang}
             </a>

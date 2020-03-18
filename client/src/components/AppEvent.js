@@ -57,13 +57,13 @@ class AppEvent extends Component {
 
         <div className="section">
           <div className="row container">
-            <div className="col s6">
+            <div className="">
+              <EventContact event={event.contact} />
+            </div>
+            <div className="col offset-s2">
               <h2>{event.title}</h2>
               <p>{event.about}</p>
               <p>{moment(event.date).format('MMMM Do YYYY')}</p>
-            </div>
-            <div className="col s6">
-              <EventContact event={event.contact} />
             </div>
           </div>
         </div>
@@ -75,6 +75,8 @@ class AppEvent extends Component {
             </a>
           </div>
         )}
+
+        <div style={{marginBottom: "1%"}}></div>
       </>
     );
   }
