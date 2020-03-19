@@ -41,6 +41,8 @@ var upload = multer({
  * CRUD methods for Event model
  */
 router.get('/', (req, res) => {
+  console.log(req.query.genre.replace("/", ""))
+
   Event.find()
     .then(events => res.json(events))
     .catch(err => res.status(400).json('Error: ' + err));

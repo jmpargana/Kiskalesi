@@ -11,17 +11,20 @@ class Agenda extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
+
     axios
-      .get('http://127.0.0.1:3001/events', {})
+      .get('http://127.0.0.1:3001/events', {
+        params: {
+          genre: this.props.location.pathname
+        }
+      })
       .then(res => {
         this.setState({
           events: res.data,
         });
       })
       .catch(err => console.log(err));
-
-    console.log(this.props)
   }
 
   render() {
