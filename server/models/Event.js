@@ -12,14 +12,40 @@ const EventSchema = mongoose.Schema({
     type: String,
     required: false,
   },
-  title: {
-    type: String,
-    required: false,
+
+  tr: {
+    title: {
+      type: String,
+      required: false,
+    },
+    about: {
+      type: String,
+      required: false,
+    },
   },
-  about: {
-    type: String,
-    required: false,
+
+  ru: {
+    title: {
+      type: String,
+      required: false,
+    },
+    about: {
+      type: String,
+      required: false,
+    },
   },
+
+  en: {
+    title: {
+      type: String,
+      required: false,
+    },
+    about: {
+      type: String,
+      required: false,
+    },
+  },
+
   date: {
     type: Date,
     required: false,
@@ -32,18 +58,18 @@ const EventSchema = mongoose.Schema({
   location: {
     lat: {
       type: Number,
-      required: false
+      required: false,
     },
     lng: {
       type: Number,
-      required: false
-    }
+      required: false,
+    },
   },
   contact: {
     address: {
       address: String,
       city: String,
-      postalCode: String
+      postalCode: String,
     },
     email: {
       type: String,

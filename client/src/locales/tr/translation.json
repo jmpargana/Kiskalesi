@@ -1,8 +1,20 @@
 {
-  "Welcome": "Höşgeldinis Kızkalesi'ye",
+  "Welcome": "Kızkalesi'ne Höşgeldinis",
   "Agenda": "Gündem",
-  "Admin": "yönetim",
+  "Admin": "Yönetim",
   "Title": "Kızkalesi",
   "Language": "Dil",
-  "CreateEvent": "etkinlik oluşturmak"
+  "CreateEvent": "Etkinlik Oluştur",
+  "Explore": "Keşfetmek",
+  "Restaurants": "Restoranlar",
+  "Shopping": "Alışveriş Yapmak",
+  "Sailing": "Yelkencilik",
+  "Museums": "Müzeler",
+  "Attractions": "Etkinlikler",
+  "ParksGardens": "Parklar ve Bahçeler",
+  "Hotels": "Oteller",
+  "HowToGet": "Nasıl Gidilir",
+  "Map": "Map",
+  "Experience": "Deneyim",
+  "Infos": "Enformasyon"
 }

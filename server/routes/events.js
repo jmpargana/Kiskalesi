@@ -52,8 +52,9 @@ router.post('/post', upload.single('img'), (req, res) => {
   const newEvent = new Event({
     genre: req.body.genre,
     img: url + '/public/' + req.file.filename,
-    title: req.body.title,
-    about: req.body.about,
+    en: JSON.parse(req.body.en),
+    tr: JSON.parse(req.body.tr),
+    ru: JSON.parse(req.body.ru),
     date: req.body.date,
     contact: JSON.parse(req.body.contact),
   })

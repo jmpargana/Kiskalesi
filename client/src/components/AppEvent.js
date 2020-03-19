@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from 'moment';
 import auth0Client from './Auth';
 import SimpleMap from './testmap';
+import i18n from '../i18n';
 
 class AppEvent extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class AppEvent extends Component {
       event: {},
     };
 
-    this.deleteEvent = this.deleteEvent.bind(this)
+    this.deleteEvent = this.deleteEvent.bind(this);
   }
 
   componentDidMount() {
@@ -31,22 +32,31 @@ class AppEvent extends Component {
   }
 
   deleteEvent() {
-        console.log("Deleting event");
-    // axios
-    //   .delete(
+    axios
+      .delete(
+        'http://127.0.0.1:3001/events/' +
+          this.props.location.pathname.split('/')[2],
+      )
+      .catch(err => console.log(err));
 
-    //   )
+    // window.location = '/';
   }
 
   render() {
     let event = this.state.event;
+    const getCurrentLng = () => i18n.language || '';
+
     return (
       <>
         <div className="parallax-container">
           <div className="parralax">
             <div className="row">
               <div className="col no-padding">
-                <img src={event.img} alt={event.title} style={{width: '100%'}} />
+                <img
+                  src={event.img}
+                  alt={event.title}
+                  style={{width: '100%'}}
+                />
               </div>
               <div>
                 <SimpleMap height="500px" width="600px" />
@@ -61,8 +71,8 @@ class AppEvent extends Component {
               <EventContact event={event.contact} />
             </div>
             <div className="col offset-s2">
-              <h2>{event.title}</h2>
-              <p>{event.about}</p>
+              <h2>{event[getCurrentLng()] ? event[getCurrentLng()].title : ''}</h2>
+              <p>{event[getCurrentLng()] ? event[getCurrentLng()].about : ''}</p>
               <p>{moment(event.date).format('MMMM Do YYYY')}</p>
             </div>
           </div>
@@ -70,13 +80,16 @@ class AppEvent extends Component {
 
         {auth0Client.isAuthenticated() && (
           <div className="fixed-action-btn">
-            <a href="#0" className="btn-floating btn-large red" onClick={this.deleteEvent}>
+            <a
+              href="#0"
+              className="btn-floating btn-large red"
+              onClick={this.deleteEvent}>
               <i className="large material-icons">delete</i>
             </a>
           </div>
         )}
 
-        <div style={{marginBottom: "1%"}}></div>
+        <div style={{marginBottom: '1%'}}></div>
       </>
     );
   }

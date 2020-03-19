@@ -4,5 +4,18 @@
   "Title": "Kizkalesi",
   "Admin": "Admin",
   "Language": "Language",
-  "CreateEvent": "Create Event"
+  "CreateEvent": "Create Event",
+  "Explore": "Explore",
+  "Restaurants": "Restaurants",
+  "Shopping": "Shopping",
+  "Sailing": "Sailing",
+  "Museums": "Museums",
+  "Attractions": "Attractions",
+  "ParksGardens": "Parks & Gardens",
+  "Hotels": "Hotels",
+  "HowToGet": "How to Get There",
+  "Map": "Map",
+  "Experience": "Experience",
+  "Infos": "Infos"
+
 }

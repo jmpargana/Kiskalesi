@@ -89,16 +89,32 @@ class CreateEvent extends Component {
       phone: this.state.contactPhone,
     };
 
+    const en = {
+      title: this.state.titleEn,
+      about: this.state.aboutEn,
+    }
+
+    const ru = {
+      title: this.state.titleRu,
+      about: this.state.aboutRu
+    }
+
+    const tr = {
+      title: this.state.titleTr,
+      about: this.state.aboutTr
+    }
+
     // attach data to form as strings
     // objects will be parsed befored being saved
     // in database on server post request
     form.append('img', this.state.img);
     form.append('genre', this.state.genre);
-    form.append('title', this.state.title);
-    form.append('about', this.state.about);
     form.append('date', this.state.date);
 
     form.append('contact', JSON.stringify(contact));
+    form.append('en', JSON.stringify(en));
+    form.append('ru', JSON.stringify(ru));
+    form.append('tr', JSON.stringify(tr));
 
     axios
       .post('http://127.0.0.1:3001/events/post', form, {
