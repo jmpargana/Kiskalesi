@@ -20,10 +20,14 @@ class Agenda extends Component {
         });
       })
       .catch(err => console.log(err));
+
+    console.log(this.props)
   }
 
   render() {
     const eventId = this.props.match.params.eventId;
+    // const pathname = this.props.pathname
+
     return eventId ? (
       <Router>
         <Redirect to={'/location/' + eventId} />

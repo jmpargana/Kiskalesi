@@ -1,30 +1,22 @@
 import React, {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {
-  Route,
-  Switch,
-  withRouter,
-} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 
 import Agenda from './components/Agenda';
-// import AppNavbar from './components/AppNavbar';
 import Home from './components/Home';
-import Experience from './components/Experience';
-import Explore from './components/Explore';
-import Infos from './components/Infos';
+// import Experience from './components/Experience';
+// import Explore from './components/Explore';
+// import Infos from './components/Infos';
 import AppEvent from './components/AppEvent';
 import NotFound from './components/notFound';
 import CreateEvent from './components/CreateEvent';
 import AppFooter from './components/AppFooter';
-// import SimpleMap from './components/Maps';
 import NavBar from './components/NavBar';
 import Callback from './components/Callback';
 import SecuredRoute from './components/SecuredRoute';
 import auth0Client from './components/Auth';
-
-
-
+import {routes} from './jsonData/routes';
 
 class App extends Component {
   constructor(props) {
@@ -48,26 +40,31 @@ class App extends Component {
     this.setState({checkingSession: false});
   }
 
-
   render() {
     return (
       <div className="App">
         <NavBar />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/agenda/:eventId?" component={Agenda} />
-            <Route path="/experience/:eventId?" component={Experience} />
-            <Route path="/explore/:eventId?" component={Explore} />
-            <Route path="/infos/:eventId?" component={Infos} />
-            <Route path="/location/:eventId" component={AppEvent} />
-            <Route exact path="/callback" component={Callback} />
-            <SecuredRoute path="/admin" 
-                          component={CreateEvent} 
-                          checkingSession={this.state.checkingSession}
+        <Switch>
+          <Route exact path="/" component={Home} />
+
+          {routes.map((route, i) => (
+            <Route
+              key={i}
+              path={'/' + route + '/:eventId?'}
+              component={Agenda}
             />
-            <Route component={NotFound} />
-          </Switch>
-      <AppFooter />
+          ))}
+
+          <Route path="/location/:eventId" component={AppEvent} />
+          <Route exact path="/callback" component={Callback} />
+          <SecuredRoute
+            path="/admin"
+            component={CreateEvent}
+            checkingSession={this.state.checkingSession}
+          />
+          <Route component={NotFound} />
+        </Switch>
+        <AppFooter />
       </div>
     );
   }

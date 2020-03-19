@@ -3,7 +3,7 @@ import React from 'react';
 const list = {
   Explore: ['Restaurants', 'Shopping', 'Sailing'],
   Experience: ['Museums', 'Attractions', 'ParksGardens'],
-  Infos: ['Hotels', 'HowToGet', 'Map'],
+  Infos: ['Hotels', 'HowToGet'],
 };
 
 export const GenreInputSelector = props => (
@@ -17,6 +17,8 @@ export const GenreInputSelector = props => (
         <option value="" disabled>
           Choose your option
         </option>
+
+        <option value="Event">Event</option>
 
         {Object.keys(list).map((obj, i) => (
           <optgroup label={obj} key={i}>
