@@ -6,6 +6,8 @@ import auth0Client from './Auth';
 import {Translation} from 'react-i18next';
 import {ContactInput} from './ContactInputs';
 import {GenreInputSelector} from './GenreInputSelector';
+import {TitleAbout} from './TitleAbout';
+import SimpleMap from './testmap';
 import M from 'materialize-css';
 
 class CreateEvent extends Component {
@@ -140,6 +142,44 @@ class CreateEvent extends Component {
       },
     ];
 
+
+    let translations = [
+      {
+        lang: "English",
+        titleId: "title-en",
+        titleName: "titleEn",
+        titleValue: this.state.titleEn,
+        title: "Title",
+        aboutId: "about-en",
+        aboutName: "aboutEn",
+        aboutValue: this.state.aboutEn,
+        about: "About"
+      },
+      {
+        lang: "Русский",
+        titleId: "title-ru",
+        titleName: "titleRu",
+        titleValue: this.state.titleRu,
+        title: "Заглавие",
+        aboutId: "about-ru",
+        aboutName: "aboutRu",
+        aboutValue: this.state.aboutRu,
+        about: "Про"
+      },
+      {
+        lang: "Türkçe",
+        titleId: "title-tr",
+        titleName: "titleTr",
+        titleValue: this.state.titleTr,
+        title: "Başlık",
+        aboutId: "about-tr",
+        aboutName: "aboutTr",
+        aboutValue: this.state.aboutTr,
+        about: "hakkında"
+      },
+    ]
+
+
     return (
       <div className="container">
         <h3>
@@ -150,69 +190,8 @@ class CreateEvent extends Component {
         <div style={{marginTop: '5%'}}></div>
         <form onSubmit={this.onSubmit}>
           <div className="row">
-            <div
-              className="col s6"
-              style={{marginTop: '5%', marginRight: '5%'}}>
-              <GenreInputSelector 
-                onChange={this.handleChange}
-                value={this.state.genre}
-              />
-              <div className="row">
-                <div className="file-field input-field col s12">
-                  <div className="btn">
-                    <span>Image</span>
-                    <input type="file" onChange={this.onChangeImg} />
-                  </div>
-                  <div className="file-path-wrapper">
-                    <input className="file-path validate" type="text" />
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input
-                    type="text"
-                    id="title"
-                    required
-                    className="validate"
-                    name="title"
-                    value={this.state.title}
-                    onChange={this.handleChange}
-                  />
-                  <label htmlFor="title">Title</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input
-                    type="text"
-                    id="about"
-                    required
-                    name="about"
-                    className="validate"
-                    value={this.state.about}
-                    onChange={this.handleChange}
-                  />
-                  <label htmlFor="about">About </label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s6">
-                  <input
-                    type="submit"
-                    value="Create New Event"
-                    className="btn btn-primary"
-                  />
-                </div>
-                <div className="input-field col s6">
-                  <div className="col s12">
-                    <DatePicker
-                      selected={this.state.date}
-                      onChange={this.onChangeDate}
-                    />
-                  </div>
-                </div>
-              </div>
+            <div className="col s6" style={{marginTop: '1%'}}>
+              <SimpleMap height="600px" width="620px" />
             </div>
 
             <div className="row">
@@ -268,6 +247,59 @@ class CreateEvent extends Component {
             </div>
           </div>
 
+          <div className="row">
+            <div className="col s3">
+              <div className="row">
+                <div className="file-field input-field col s12">
+                  <div className="btn">
+                    <span>Image</span>
+                    <input type="file" onChange={this.onChangeImg} />
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" />
+                  </div>
+                </div>
+              </div>
+
+              <GenreInputSelector
+                onChange={this.handleChange}
+                value={this.state.genre}
+              />
+              <div className="input-field col s12">
+                  <DatePicker
+                    selected={this.state.date}
+                    onChange={this.onChangeDate}
+                  />
+              </div>
+            </div>
+
+            {translations.map((lang, i) => (
+              <TitleAbout
+                key={i}
+                lang={lang.lang}
+                titleId={lang.titleId}
+                titleName={lang.titleName}
+                titleValue={lang.titleValue}
+                title={lang.title}
+                onChange={this.handleChange}
+                aboutId={lang.aboutId}
+                aboutName={lang.aboutName}
+                aboutValue={lang.aboutValue}
+                about={lang.about}
+              />
+            ))}
+
+          </div>
+
+            <div className="row">
+              <div className="input-field col s6 center-align">
+                <input
+                  type="submit"
+                  value="Create New Event"
+                  className="btn btn-primary"
+                />
+              </div>
+            </div>
           <div style={{marginBottom: '10%'}}></div>
         </form>
       </div>

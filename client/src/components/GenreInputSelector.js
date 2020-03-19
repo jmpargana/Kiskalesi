@@ -1,9 +1,9 @@
 import React from 'react';
 
-const list ={ 
-  "Explore": [ "Restaurants", "Shopping", "Sailing" ] ,
-  "Experience": [ "Museums", "Attractions", "ParksGardens" ],
-  "Infos": [ "Hotels", "HowToGet", "Map" ]
+const list = {
+  Explore: ['Restaurants', 'Shopping', 'Sailing'],
+  Experience: ['Museums', 'Attractions', 'ParksGardens'],
+  Infos: ['Hotels', 'HowToGet', 'Map'],
 };
 
 export const GenreInputSelector = props => (
@@ -18,10 +18,10 @@ export const GenreInputSelector = props => (
           Choose your option
         </option>
 
-        {Object.keys(list).map(obj => (
-          <optgroup label={obj}>
-            {list[obj].map(val => (
-            <option value={val}>{val}</option>
+        {Object.keys(list).map((obj, i) => (
+          <optgroup label={obj} key={i}>
+            {list[obj].map((val, j) => (
+              <option value={val} key={i + j}>{val}</option>
             ))}
           </optgroup>
         ))}
