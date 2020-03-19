@@ -20,8 +20,10 @@ class CreateEvent extends Component {
 
       titleEn: '',
       aboutEn: '',
+
       titleRu: '',
       aboutRu: '',
+
       titleTr: '',
       aboutTr: '',
 
