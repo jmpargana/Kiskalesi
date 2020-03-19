@@ -4,52 +4,45 @@ import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 import auth0Client from './Auth';
 import {Translation} from 'react-i18next';
+import {ContactInput} from './ContactInputs';
+import {GenreInputSelector} from './GenreInputSelector';
 import M from 'materialize-css';
 
 class CreateEvent extends Component {
   constructor(props) {
     super(props);
 
+    // most strings will be organized in objects in onSubmit call
+    // they are just listed in order to use the generic handleChange
     this.state = {
       img: null,
       genre: '',
+
       titleEn: '',
       aboutEn: '',
       titleRu: '',
       aboutRu: '',
       titleTr: '',
       aboutTr: '',
+
       date: new Date(),
-      contact: {
-        address: {
-          address: '',
-          city: '',
-          postalCode: '',
-        },
-        email: '',
-        website: '',
-        phone: '',
-      },
+
+      contactAddressAddress: '',
+      contactAddressCity: '',
+      contactAddressPostalCode: '',
+      contactEmail: '',
+      contactWebsite: '',
+      contactPhone: '',
+
+      contactTest: '',
     };
 
-    this.onChangeGenre = this.onChangeGenre.bind(this);
+    // generic handleChange for all text inputs
+    this.handleChange = this.handleChange.bind(this);
     this.onChangeImg = this.onChangeImg.bind(this);
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeAbout = this.onChangeAbout.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
-    this.onChangeContactAddressAddress = this.onChangeContactAddressAddress.bind(
-      this,
-    );
-    this.onChangeContactAddressCity = this.onChangeContactAddressCity.bind(
-      this,
-    );
-    this.onChangeContactAddressPostalCode = this.onChangeContactAddressPostalCode.bind(
-      this,
-    );
-    this.onChangeContactEmail = this.onChangeContactEmail.bind(this);
-    this.onChangeContactWebsite = this.onChangeContactWebsite.bind(this);
-    this.onChangeContactPhone = this.onChangeContactPhone.bind(this);
 
+    // onSubmit will organize the state in objects before sending
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -57,9 +50,9 @@ class CreateEvent extends Component {
     M.AutoInit();
   }
 
-  onChangeGenre(e) {
+  handleChange(e) {
     this.setState({
-      genre: e.target.value,
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -69,97 +62,10 @@ class CreateEvent extends Component {
     });
   }
 
-  onChangeTitle(e) {
-    this.setState({
-      title: e.target.value,
-    });
-  }
-
-  onChangeAbout(e) {
-    this.setState({
-      about: e.target.value,
-    });
-  }
-
   onChangeDate(date) {
     this.setState({
       date: date,
     });
-  }
-
-  onChangeContactAddressAddress(e) {
-    e.persist();
-    this.setState(prevState => ({
-      ...prevState,
-      contact: {
-        ...prevState.contact,
-        address: {
-          ...prevState.contact.address,
-          address: e.target.value,
-        },
-      },
-    }));
-  }
-
-  onChangeContactAddressCity(e) {
-    e.persist();
-    this.setState(prevState => ({
-      ...prevState,
-      contact: {
-        ...prevState.contact,
-        address: {
-          ...prevState.contact.address,
-          city: e.target.value,
-        },
-      },
-    }));
-  }
-
-  onChangeContactAddressPostalCode(e) {
-    e.persist();
-    this.setState(prevState => ({
-      ...prevState,
-      contact: {
-        ...prevState.contact,
-        address: {
-          ...prevState.contact.address,
-          postalCode: e.target.value,
-        },
-      },
-    }));
-  }
-
-  onChangeContactEmail(e) {
-    e.persist();
-    this.setState(prevState => ({
-      ...prevState,
-      contact: {
-        ...prevState.contact,
-        email: e.target.value,
-      },
-    }));
-  }
-
-  onChangeContactWebsite(e) {
-    e.persist();
-    this.setState(prevState => ({
-      ...prevState,
-      contact: {
-        ...prevState.contact,
-        website: e.target.value,
-      },
-    }));
-  }
-
-  onChangeContactPhone(e) {
-    e.persist();
-    this.setState(prevState => ({
-      ...prevState,
-      contact: {
-        ...prevState.contact,
-        phone: e.target.value,
-      },
-    }));
   }
 
   onSubmit(e) {
@@ -167,16 +73,28 @@ class CreateEvent extends Component {
 
     let form = new FormData();
 
+    // organize data in objects
+    const contact = {
+      address: {
+        address: this.state.contactAddressAddress,
+        city: this.state.contactAddressCity,
+        postalCode: this.state.contactAddressPortalCode,
+      },
+      email: this.state.contactEmail,
+      website: this.state.contactWebsite,
+      phone: this.state.contactPhone,
+    };
+
+    // attach data to form as strings
+    // objects will be parsed befored being saved
+    // in database on server post request
     form.append('img', this.state.img);
     form.append('genre', this.state.genre);
     form.append('title', this.state.title);
     form.append('about', this.state.about);
     form.append('date', this.state.date);
 
-    form.append('contact', JSON.stringify(this.state.contact));
-
-    console.log(form);
-    console.log(this.state.contact);
+    form.append('contact', JSON.stringify(contact));
 
     axios
       .post('http://127.0.0.1:3001/events/post', form, {
@@ -188,6 +106,38 @@ class CreateEvent extends Component {
   }
 
   render() {
+    // all these elements will be rendered similarly in the ContactInput componentbb
+    let contact = [
+      {
+        name: 'contactAddressAddress',
+        id: 'contact-address-address',
+        state: this.state.contactAddressAddress,
+        icon: 'house',
+        label: 'Address',
+      },
+      {
+        name: 'contactEmail',
+        id: 'contact-email',
+        state: this.state.contactEmail,
+        icon: 'email',
+        label: 'Email',
+      },
+      {
+        name: 'contactWebsite',
+        id: 'contact-website',
+        state: this.state.contactWebsite,
+        icon: 'laptop',
+        label: 'Website',
+      },
+      {
+        name: 'contactPhone',
+        id: 'contact-phone',
+        state: this.state.contactPhone,
+        icon: 'phone',
+        label: 'Phone',
+      },
+    ];
+
     return (
       <div className="container">
         <h3>
@@ -195,38 +145,16 @@ class CreateEvent extends Component {
             {(t, {i18n}) => <div>{t('CreateEvent')}</div>}
           </Translation>
         </h3>
-          <div style={{marginTop: '5%'}}></div>
+        <div style={{marginTop: '5%'}}></div>
         <form onSubmit={this.onSubmit}>
           <div className="row">
-            <div className="col s6" style={{marginTop: '5%', marginRight: '5%'}}>
-              <div className="row">
-                <div className="input-field col s12 m6">
-                  <select
-                    onChange={this.onChangeGenre}
-                    value={this.state.genre}
-                    required>
-                    <option value="" disabled>
-                      Choose your option
-                    </option>
-                    <optgroup label="Explore">
-                      <option value="Restaurants">Restaurants</option>
-                      <option value="Shopping">Shopping</option>
-                      <option value="Sailing">Sailling</option>
-                    </optgroup>
-                    <optgroup label="Experience">
-                      <option value="Museums">Museums</option>
-                      <option value="Attractions">Attract</option>
-                      <option value="ParksGardens">Parks and Gardens</option>
-                    </optgroup>
-                    <optgroup label="Infos">
-                      <option value="Hotels">Hotels</option>
-                      <option value="HowToGet">How to get there</option>
-                      <option value="Map">Map</option>
-                    </optgroup>
-                  </select>
-                  <label>Genre</label>
-                </div>
-              </div>
+            <div
+              className="col s6"
+              style={{marginTop: '5%', marginRight: '5%'}}>
+              <GenreInputSelector 
+                onChange={this.handleChange}
+                value={this.state.genre}
+              />
               <div className="row">
                 <div className="file-field input-field col s12">
                   <div className="btn">
@@ -245,8 +173,9 @@ class CreateEvent extends Component {
                     id="title"
                     required
                     className="validate"
+                    name="title"
                     value={this.state.title}
-                    onChange={this.onChangeTitle}
+                    onChange={this.handleChange}
                   />
                   <label htmlFor="title">Title</label>
                 </div>
@@ -257,15 +186,15 @@ class CreateEvent extends Component {
                     type="text"
                     id="about"
                     required
+                    name="about"
                     className="validate"
                     value={this.state.about}
-                    onChange={this.onChangeAbout}
+                    onChange={this.handleChange}
                   />
                   <label htmlFor="about">About </label>
                 </div>
               </div>
               <div className="row">
-
                 <div className="input-field col s6">
                   <input
                     type="submit"
@@ -281,7 +210,7 @@ class CreateEvent extends Component {
                     />
                   </div>
                 </div>
-</div>
+              </div>
             </div>
 
             <div className="row">
@@ -291,20 +220,6 @@ class CreateEvent extends Component {
                     <span className="card-title">Contact Data</span>
 
                     <div className="row">
-                      <div className="input-field col s12">
-                        <i className="material-icons prefix">house</i>
-                        <input
-                          type="text"
-                          id="contact-adress-adress"
-                          required
-                          className="validate"
-                          value={this.state.contact.address.address}
-                          onChange={this.onChangeContactAddressAddress}
-                        />
-                        <label htmlFor="contact-adress-adress">Adress</label>
-                      </div>
-                    </div>
-                    <div className="row">
                       <div className="input-field col s6">
                         <i className="material-icons prefix">place</i>
                         <input
@@ -312,8 +227,9 @@ class CreateEvent extends Component {
                           id="contact-adress-city"
                           required
                           className="validate"
-                          value={this.state.contact.address.city}
-                          onChange={this.onChangeContactAddressCity}
+                          name="contactAddressCity"
+                          value={this.state.contactAddressCity}
+                          onChange={this.handleChange}
                         />
                         <label htmlFor="contact-adress-city">City</label>
                       </div>
@@ -323,54 +239,27 @@ class CreateEvent extends Component {
                           id="contact-adress-postal-code"
                           required
                           className="validate"
-                          value={this.state.contact.address.postalCode}
-                          onChange={this.onChangeContactAddressPostalCode}
+                          name="contactAddressPostalCode"
+                          value={this.state.contactAddressPostalCode}
+                          onChange={this.handleChange}
                         />
                         <label htmlFor="contact-adress-postal-code">
                           Postal Code
                         </label>
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="input-field col s12">
-                        <i className="material-icons prefix">email</i>
-                        <input
-                          type="email"
-                          id="contact-email"
-                          required
-                          className="validate"
-                          value={this.state.contact.email}
-                          onChange={this.onChangeContactEmail}
-                        />
-                        <label htmlFor="contact-email">Email</label>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="input-field col s12">
-                        <i className="material-icons prefix">laptop</i>
-                        <input
-                          type="text"
-                          required
-                          id="contact-website"
-                          className="validate"
-                          value={this.state.contact.website}
-                          onChange={this.onChangeContactWebsite}
-                        />
-                        <label htmlFor="contact-website">Website</label>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="input-field col s12">
-                        <i className="material-icons prefix">phone</i>
-                        <input
-                          type="text"
-                          id="contact-phone"
-                          className="form-control"
-                          onChange={this.onChangeContactPhone}
-                        />
-                        <label htmlFor="contact-phone">Phone</label>
-                      </div>
-                    </div>
+
+                    {contact.map((obj, i) => (
+                      <ContactInput
+                        key={i}
+                        onChange={this.handleChange}
+                        state={obj.state}
+                        icon={obj.icon}
+                        id={obj.id}
+                        name={obj.name}
+                        label={obj.label}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
