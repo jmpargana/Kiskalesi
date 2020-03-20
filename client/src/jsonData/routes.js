@@ -1,5 +1,5 @@
 export const routes = [
-  "agenda",
+  "events",
   "restaurants",
   "shopping",
   "sailing",
