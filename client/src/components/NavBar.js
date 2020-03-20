@@ -39,7 +39,7 @@ class NavBar extends React.Component {
                 </Link>
                 <ul className="right hide-on-med-and-down">
                   <li>
-                    <Link className="teal-text" to="/agenda">
+                    <Link className="teal-text" to="/events">
                       {t('Agenda')}
                     </Link>
                   </li>

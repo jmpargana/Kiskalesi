@@ -108,8 +108,10 @@ class CreateEvent extends Component {
     // objects will be parsed befored being saved
     // in database on server post request
     form.append('img', this.state.img);
-    form.append('genre', this.state.genre);
+    form.append('genre', this.state.genre.toLowerCase());
     form.append('date', this.state.date);
+
+    console.log(this.state.genre.toLowerCase())
 
     form.append('contact', JSON.stringify(contact));
     form.append('en', JSON.stringify(en));

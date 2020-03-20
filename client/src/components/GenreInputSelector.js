@@ -18,7 +18,7 @@ export const GenreInputSelector = props => (
           Choose your option
         </option>
 
-        <option value="Event">Event</option>
+        <option value="Events">Events</option>
 
         {Object.keys(list).map((obj, i) => (
           <optgroup label={obj} key={i}>

@@ -5,6 +5,7 @@ import moment from 'moment';
 import auth0Client from './Auth';
 import SimpleMap from './testmap';
 import i18n from '../i18n';
+import M from 'materialize-css';
 
 class AppEvent extends Component {
   constructor(props) {
@@ -29,6 +30,8 @@ class AppEvent extends Component {
         });
       })
       .catch(err => console.log(err));
+
+    M.AutoInit()
   }
 
   deleteEvent() {
