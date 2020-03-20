@@ -13,7 +13,7 @@ class Agenda extends Component {
     };
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     axios
       .get('http://127.0.0.1:3001/events', {
         params: {

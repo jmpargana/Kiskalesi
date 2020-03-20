@@ -59,6 +59,7 @@ router.post('/post', upload.single('img'), (req, res) => {
     ru: JSON.parse(req.body.ru),
     date: req.body.date,
     contact: JSON.parse(req.body.contact),
+    center: JSON.parse(req.body.center)
   })
     .save()
     .then(() => res.json('Adding new event'))

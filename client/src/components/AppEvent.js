@@ -31,7 +31,7 @@ class AppEvent extends Component {
       })
       .catch(err => console.log(err));
 
-    M.AutoInit()
+    M.AutoInit();
   }
 
   deleteEvent() {
@@ -62,7 +62,14 @@ class AppEvent extends Component {
                 />
               </div>
               <div>
-                <SimpleMap height="500px" width="600px" />
+                <SimpleMap
+                  height="500px"
+                  width="600px"
+                  center={event.center}
+                  text={
+                    event[getCurrentLng()] ? event[getCurrentLng()].title : ''
+                  }
+                />
               </div>
             </div>
           </div>
@@ -74,8 +81,12 @@ class AppEvent extends Component {
               <EventContact event={event.contact} />
             </div>
             <div className="col offset-s2">
-              <h2>{event[getCurrentLng()] ? event[getCurrentLng()].title : ''}</h2>
-              <p>{event[getCurrentLng()] ? event[getCurrentLng()].about : ''}</p>
+              <h2>
+                {event[getCurrentLng()] ? event[getCurrentLng()].title : ''}
+              </h2>
+              <p>
+                {event[getCurrentLng()] ? event[getCurrentLng()].about : ''}
+              </p>
               <p>{moment(event.date).format('MMMM Do YYYY')}</p>
             </div>
           </div>

@@ -1,0 +1,7 @@
+#hide-hover {
+    display: none;
+}
+
+#show:hover #hide-hover {
+    display : block;
+}

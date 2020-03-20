@@ -81,6 +81,10 @@ const EventSchema = mongoose.Schema({
       type: String,
     },
   },
+  center: {
+    lat: Number,
+    lng: Number
+  }
 });
 
 /**

@@ -39,12 +39,18 @@ class CreateEvent extends Component {
       contactPhone: '',
 
       contactTest: '',
+
+      coordinates: {
+        lat: 0.0,
+        lng: 0.0
+      }
     };
 
     // generic handleChange for all text inputs
     this.handleChange = this.handleChange.bind(this);
     this.onChangeImg = this.onChangeImg.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
+    this.onClickMap = this.onClickMap.bind(this);
 
     // onSubmit will organize the state in objects before sending
     this.onSubmit = this.onSubmit.bind(this);
@@ -70,6 +76,15 @@ class CreateEvent extends Component {
     this.setState({
       date: date,
     });
+  }
+
+  onClickMap(e) {
+    this.setState({
+      coordinates: {
+        lng: e.lng,
+        lat: e.lat
+      }
+    })
   }
 
   onSubmit(e) {
@@ -114,9 +129,13 @@ class CreateEvent extends Component {
     console.log(this.state.genre.toLowerCase())
 
     form.append('contact', JSON.stringify(contact));
+
     form.append('en', JSON.stringify(en));
     form.append('ru', JSON.stringify(ru));
     form.append('tr', JSON.stringify(tr));
+
+    form.append('center', JSON.stringify(this.state.coordinates))
+
 
     axios
       .post('http://127.0.0.1:3001/events/post', form, {
@@ -209,7 +228,7 @@ class CreateEvent extends Component {
         <form onSubmit={this.onSubmit}>
           <div className="row">
             <div className="col s6" style={{marginTop: '1%'}}>
-              <SimpleMap height="600px" width="620px" />
+              <SimpleMap height="600px" width="620px" onClick={this.onClickMap} />
             </div>
 
             <div className="row">
