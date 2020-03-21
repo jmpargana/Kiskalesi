@@ -43,7 +43,7 @@ class CreateEvent extends Component {
       coordinates: {
         lat: 0.0,
         lng: 0.0
-      }
+      },
     };
 
     // generic handleChange for all text inputs
@@ -83,7 +83,7 @@ class CreateEvent extends Component {
       coordinates: {
         lng: e.lng,
         lat: e.lat
-      }
+      },
     })
   }
 
@@ -125,8 +125,6 @@ class CreateEvent extends Component {
     form.append('img', this.state.img);
     form.append('genre', this.state.genre.toLowerCase());
     form.append('date', this.state.date);
-
-    console.log(this.state.genre.toLowerCase())
 
     form.append('contact', JSON.stringify(contact));
 
@@ -221,14 +219,16 @@ class CreateEvent extends Component {
       <div className="container">
         <h3>
           <Translation>
-            {(t, {i18n}) => <div>{t('CreateEvent')}</div>}
+            {(t, {i18n}) => <div>{t('createevent')}</div>}
           </Translation>
         </h3>
         <div style={{marginTop: '5%'}}></div>
         <form onSubmit={this.onSubmit}>
           <div className="row">
             <div className="col s6" style={{marginTop: '1%'}}>
-              <SimpleMap height="600px" width="620px" onClick={this.onClickMap} />
+              <SimpleMap height="600px" width="620px" onClick={this.onClickMap} 
+                calledPin={this.state.coordinates} text="New"
+              />
             </div>
 
             <div className="row">

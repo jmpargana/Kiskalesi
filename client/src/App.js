@@ -17,6 +17,7 @@ import Callback from './components/Callback';
 import SecuredRoute from './components/SecuredRoute';
 import auth0Client from './components/Auth';
 import {routes} from './jsonData/routes';
+import FullMap from './components/FullMap';
 
 class App extends Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class App extends Component {
             />
           ))}
 
+          <Route path="/map" component={FullMap} />
           <Route path="/location/:eventId" component={AppEvent} />
           <Route exact path="/callback" component={Callback} />
           <SecuredRoute

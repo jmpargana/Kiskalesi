@@ -1,14 +1,14 @@
 export const navbarElements = [
   {
-    cathegory: "Explore",
-    list: ["Restaurants", "Shopping", "Sailing"]
+    cathegory: "explore",
+    list: ["restaurants", "shopping", "sailing"]
   },
   {
-    cathegory: "Experience",
-    list: ["Museums", "Attractions", "ParksGardens"]
+    cathegory: "experience",
+    list: ["museums", "attractions", "parksgardens"]
   },
   {
-    cathegory: "Infos",
-    list: ["Hotels", "HowToGet", "Map"]
+    cathegory: "infos",
+    list: ["hotels", "howtoget", "map"]
   },
 ]

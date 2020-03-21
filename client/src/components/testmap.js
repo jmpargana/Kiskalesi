@@ -4,7 +4,7 @@ import i18n from '../i18n';
 import './SimpleMap.css';
 
 const AnyReactComponent = props => (
-  <div id="show" className={props.color ? props.color + '-text' : 'red-text'}>
+  <div id="show" className={props.color ? props.color + '-text' : ''}>
     <i className="material-icons">place</i>
     <span id="hide-hover">{props.text}</span>
   </div>
@@ -34,7 +34,7 @@ class SimpleMap extends Component {
   onClick(e) {
     this.setState({
       clicked: true,
-      pin: <AnyReactComponent lat={e.lat} lng={e.lng} text="New" />,
+      pin: <AnyReactComponent lat={e.lat} lng={e.lng} text="onClick" />,
     });
   }
 
@@ -57,10 +57,10 @@ class SimpleMap extends Component {
           onClick={this.props.onClick || this.onClick}>
           {this.state.clicked ? this.state.pin : ''}
 
-          {this.props.center ? (
+          {this.props.calledPin ? (
             <AnyReactComponent
-              lat={this.props.center.lat}
-              lng={this.props.center.lng}
+              lat={this.props.calledPin.lat}
+              lng={this.props.calledPin.lng}
               text={this.props.text}
             />
           ) : (

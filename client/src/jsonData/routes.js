@@ -8,5 +8,4 @@ export const routes = [
   "parksgardens",
   "hotels",
   "howtoget",
-  "map"
 ]

@@ -22,7 +22,7 @@ class Home extends React.Component {
             <Translation>
               {(t, {i18n}) => (
                 <h2 className="header">
-                  {t('Welcome')}
+                  {t('welcome')}
                 </h2>
               )}
             </Translation>

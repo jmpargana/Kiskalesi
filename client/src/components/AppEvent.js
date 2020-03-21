@@ -65,7 +65,7 @@ class AppEvent extends Component {
                 <SimpleMap
                   height="500px"
                   width="600px"
-                  center={event.center}
+                  calledPin={event.center}
                   text={
                     event[getCurrentLng()] ? event[getCurrentLng()].title : ''
                   }

@@ -15,7 +15,7 @@ export const Events = props => {
     <Translation>
       {(t, {i18n}) => (
         <div className="row container">
-          <h2>{t('Agenda')}</h2>
+          <h2>{t(props.title)}</h2>
           {subLists.map((chunks, i) => (
             <div key={'row' + i} className="row">
               {chunks.map((event, j) => (
@@ -34,7 +34,7 @@ export const Events = props => {
                           ? event[getCurrentLng()].title
                           : ''}
                       </span>
-                      ;<p>{moment(event.date).format('MMMM Do YYYY')}</p>
+                      <p>{moment(event.date).format('MMMM Do YYYY')}</p>
                     </div>
                   </div>
                 </div>

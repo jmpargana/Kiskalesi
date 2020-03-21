@@ -35,12 +35,12 @@ class NavBar extends React.Component {
             {(t, {i18n}) => (
               <div className="nav-wrapper">
                 <Link className="brand-logo teal-text" to="/">
-                  {t('Title')}
+                  {t('title')}
                 </Link>
                 <ul className="right hide-on-med-and-down">
                   <li>
                     <Link className="teal-text" to="/events">
-                      {t('Agenda')}
+                      {t('events')}
                     </Link>
                   </li>
 
@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                       className="dropdown-trigger teal-text"
                       data-target="dropdown-languages"
                       href="/#">
-                      {t('Language')}
+                      {t('language')}
                       <i className="material-icons right">arrow_drop_down</i>
                     </a>
                   </li>

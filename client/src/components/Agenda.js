@@ -29,7 +29,7 @@ class Agenda extends Component {
   }
 
   componentDidMount() {
-    M.AutoInit()
+    M.AutoInit();
   }
 
   render() {
@@ -49,10 +49,13 @@ class Agenda extends Component {
           </div>
         )}
         <div className="section">
-          <Events events={this.state.events} />
+          <Events
+            events={this.state.events}
+            title={this.props.location.pathname.replace('/', '').toLowerCase()}
+          />
         </div>
         <div className="parralax-container">
-            <SimpleMap height="500px" width="100%" />
+          <SimpleMap height="500px" width="100%" />
         </div>
       </>
     );
