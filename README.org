@@ -1,3 +1,12 @@
 * Kiskalesi
 
-This project contains the preparation for a future tourism website.
+[Demo](https://kizkalesi.herokuapp.com)
+
+All Sign Ups are currently unavailable, only admin accounts can login
+and create new items on the website. 
+
+** Bugs
+
+- no connection to local mongodb mlab uri
+- wrong grid layout on component AppEvent
+- event only changing language once and not rerendering
