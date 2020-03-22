@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const jwt = require('express-jwt');
 const jwksRsa = require('jwks-rsa');
+const path = require("path")
 
 
 
@@ -67,7 +68,13 @@ const checkJwt = jwt({
 /**
  * Route to endpoints
  */
+app.use(express.static(path.join(__dirname, "..", "client", "build")))
+
 app.use('/events', eventRouter);
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+});
 
 
 /**
