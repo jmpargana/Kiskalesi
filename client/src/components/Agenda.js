@@ -44,7 +44,7 @@ class Agenda extends Component {
         {this.props.location.pathname !== '/events' && (
           <div className="parallax-container">
             <div className="parallax">
-              <img src="public/ist2.jpg" alt="2" />
+              <img src={"public" + this.props.location.pathname + ".jpg"} alt="2" />
             </div>
           </div>
         )}
