@@ -81,7 +81,7 @@ app.get("*", (req, res) => {
  * Connect to local database
  */
 mongoose
-  .connect('mongodb://localhost:27017/kiskalesi', {
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/kiskalesi', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
