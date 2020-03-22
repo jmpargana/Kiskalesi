@@ -6,10 +6,12 @@ class Auth {
       domain: process.env.REACT_APP_DOMAIN,
       audience: 'https://' + process.env.REACT_APP_DOMAIN + "/userinfo",
       clientID: process.env.REACT_APP_CLIENT_ID,
-      redirectUri: 'http://localhost:3000/callback',
+      redirectUri: window.location.href + "callback",
       responseType: 'id_token',
       scope: 'openid profile'
     });
+
+    console.log(window)
 
     this.getProfile = this.getProfile.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
@@ -58,7 +60,7 @@ class Auth {
 
   signOut() {
     this.auth0.logout({
-      returnTo: 'http://localhost:3000',
+      returnTo: window.location.href,
       clientId: process.env.REACT_APP_CLIENT_ID,
     });
   }
