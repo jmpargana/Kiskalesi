@@ -7,6 +7,8 @@ import SimpleMap from './testmap';
 import i18n from '../i18n';
 import M from 'materialize-css';
 
+const API = "https://kizkalesi.herokuapp.com"
+
 class AppEvent extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +22,7 @@ class AppEvent extends Component {
   componentDidMount() {
     axios
       .get(
-        'http://127.0.0.1:3001/events/' +
+        API +
           this.props.location.pathname.split('/')[2],
         {},
       )

@@ -14,7 +14,7 @@ class Home extends React.Component {
       <React.Fragment>
         <div className="parallax-container">
           <div className="parallax">
-            <img src="public/sea1.jpg" alt="1" />
+            <img src="public/city1.jpg" alt="1" />
           </div>
         </div>
         <div className="section ">

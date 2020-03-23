@@ -5,6 +5,8 @@ import {Events} from './Events';
 import SimpleMap from './testmap';
 import M from 'materialize-css';
 
+const API = "https://kizkalesi.herokuapp.com/events"
+
 class Agenda extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +17,7 @@ class Agenda extends Component {
 
   UNSAFE_componentWillMount() {
     axios
-      .get('http://127.0.0.1:3001/events', {
+      .get(API, {
         params: {
           genre: this.props.location.pathname.replace('/', '').toLowerCase(),
         },

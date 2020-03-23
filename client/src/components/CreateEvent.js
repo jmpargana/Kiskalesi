@@ -10,6 +10,8 @@ import {TitleAbout} from './TitleAbout';
 import SimpleMap from './testmap';
 import M from 'materialize-css';
 
+const API = "https://kizkalesi.herokuapp.com/events/post"
+
 class CreateEvent extends Component {
   constructor(props) {
     super(props);
@@ -136,7 +138,7 @@ class CreateEvent extends Component {
 
 
     axios
-      .post('http://127.0.0.1:3001/events/post', form, {
+      .post(API, form, {
         headers: {Authorization: `Bearer ${auth0Client.getIdToken()}`},
       })
       .then(res => console.log(res.data));
