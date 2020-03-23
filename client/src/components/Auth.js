@@ -1,12 +1,14 @@
 import auth0 from 'auth0-js';
 
+const API = "https://kizkalesi.herokuapp.com/"
+
 class Auth {
   constructor() {
     this.auth0 = new auth0.WebAuth({
       domain: process.env.REACT_APP_DOMAIN,
       audience: 'https://' + process.env.REACT_APP_DOMAIN + "/userinfo",
       clientID: process.env.REACT_APP_CLIENT_ID,
-      redirectUri: window.location.href + "callback",
+      redirectUri: API + "callback",
       responseType: 'id_token',
       scope: 'openid profile'
     });

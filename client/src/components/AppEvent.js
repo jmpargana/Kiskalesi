@@ -7,7 +7,7 @@ import SimpleMap from './testmap';
 import i18n from '../i18n';
 import M from 'materialize-css';
 
-const API = "https://kizkalesi.herokuapp.com"
+const API = "https://kizkalesi.herokuapp.com/events/"
 
 class AppEvent extends Component {
   constructor(props) {
