@@ -19,6 +19,7 @@ class Agenda extends Component {
         params: {
           genre: this.props.location.pathname.replace('/', '').toLowerCase(),
         },
+        crossdomain: true,
       })
       .then(res => {
         this.setState({
