@@ -11,8 +11,6 @@ const SecuredRoute = props => {
         if (checkingSession)
           return <h3 className="text-center">Validating session...</h3>;
 
-        console.log(auth0Client)
-
         if (!auth0Client.isAuthenticated()) {
           auth0Client.signIn();
           return <div></div>;

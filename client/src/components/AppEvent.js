@@ -39,12 +39,12 @@ class AppEvent extends Component {
   deleteEvent() {
     axios
       .delete(
-        'http://127.0.0.1:3001/events/' +
+        API +
           this.props.location.pathname.split('/')[2],
       )
       .catch(err => console.log(err));
 
-    // window.location = '/';
+    window.location = '/';
   }
 
   render() {
@@ -58,6 +58,7 @@ class AppEvent extends Component {
             <div className="row">
               <div className="col no-padding">
                 <img
+                  className="materialboxed"
                   src={event.img}
                   alt={event.title}
                   style={{width: '100%'}}
@@ -79,10 +80,10 @@ class AppEvent extends Component {
 
         <div className="section">
           <div className="row container">
-            <div className="">
+            <div className="col s3">
               <EventContact event={event.contact} />
             </div>
-            <div className="col offset-s2">
+            <div className="col s9">
               <h2>
                 {event[getCurrentLng()] ? event[getCurrentLng()].title : ''}
               </h2>

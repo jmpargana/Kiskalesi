@@ -13,8 +13,6 @@ class Auth {
       scope: 'openid profile'
     });
 
-    console.log(window)
-
     this.getProfile = this.getProfile.bind(this);
     this.handleAuthentication = this.handleAuthentication.bind(this);
     this.isAuthenticated = this.isAuthenticated.bind(this);

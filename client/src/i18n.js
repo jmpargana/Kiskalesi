@@ -28,8 +28,8 @@ i18n
   .use(initReactI18next)  // passes i18n down to react-i18next
   .init({
     resources,            // read from json files
-    lng: 'en',
-    fallbackLng: 'en',    // if no language was found on browser
+    // lng: 'en',
+    // fallbackLng: 'en',    // if no language was found on browser
 
     debug: true,          // for development
 
