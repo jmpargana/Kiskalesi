@@ -12,6 +12,9 @@ const jwksRsa = require('jwks-rsa');
 const path = require("path")
 
 
+require('dotenv').config();
+
+
 
 /**
  * Routers for endpoints

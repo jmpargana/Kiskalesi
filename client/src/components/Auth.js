@@ -1,6 +1,8 @@
 import auth0 from 'auth0-js';
 
 const API = "https://kizkalesi.herokuapp.com/"
+// const API = "http://localhost:3001/"
+// const API = "http://localhost:3000/"
 
 class Auth {
   constructor() {
