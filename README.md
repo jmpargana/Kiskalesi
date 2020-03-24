@@ -1,4 +1,4 @@
-* Kiskalesi
+# Kiskalesi
 
 [Demo](https://kizkalesi.herokuapp.com)
 
@@ -7,6 +7,5 @@ and create new items on the website.
 
 ** Bugs
 
-- no connection to local mongodb mlab uri
-- wrong grid layout on component AppEvent
 - event only changing language once and not rerendering
+- multer file upload not showing images after get req
