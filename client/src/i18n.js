@@ -5,9 +5,9 @@ import Backend from 'i18next-xhr-backend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 
-import translationEN from './locales/en/translation.json';
-import translationRU from './locales/ru/translation.json';
-import translationTR from './locales/tr/translation.json';
+import translationEN from './assets/locales/en/translation.json';
+import translationRU from './assets/locales/ru/translation.json';
+import translationTR from './assets/locales/tr/translation.json';
 
 // call the translations
 const resources = {

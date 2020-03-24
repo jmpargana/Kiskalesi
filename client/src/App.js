@@ -4,9 +4,6 @@ import {Route, Switch, withRouter} from 'react-router-dom';
 
 import Agenda from './components/Agenda';
 import Home from './components/Home';
-// import Experience from './components/Experience';
-// import Explore from './components/Explore';
-// import Infos from './components/Infos';
 import AppEvent from './components/AppEvent';
 import NotFound from './components/notFound';
 import CreateEvent from './components/CreateEvent';
@@ -15,7 +12,7 @@ import NavBar from './components/NavBar';
 import Callback from './components/Callback';
 import SecuredRoute from './components/SecuredRoute';
 import auth0Client from './components/Auth';
-import {routes} from './jsonData/routes';
+import {routes} from './assets/jsonData/routes';
 import FullMap from './components/FullMap';
 
 class App extends Component {

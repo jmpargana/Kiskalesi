@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
 import './i18n';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './helpers/serviceWorker';
 import 'materialize-css/dist/css/materialize.min.css';
 
 ReactDOM.render(

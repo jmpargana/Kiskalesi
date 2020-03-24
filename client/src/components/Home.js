@@ -14,7 +14,7 @@ class Home extends React.Component {
       <React.Fragment>
         <div className="parallax-container">
           <div className="parallax">
-            <img src="public/city1.jpg" alt="1" />
+            <img src={require("../assets/images/city1.jpg" )}alt="1" />
           </div>
         </div>
         <div className="section ">
@@ -33,7 +33,7 @@ class Home extends React.Component {
         </div>
         <div className="parallax-container">
           <div className="parallax">
-            <img src="public/ist2.jpg" alt="2" />
+            <img src={require("../assets/images/ist2.jpg" )} alt="2" />
           </div>
         </div>
       </React.Fragment>

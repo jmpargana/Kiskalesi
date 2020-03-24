@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import SimpleMap from './testmap';
+import SimpleMap from './SimpleMap';
+
+const API = 'https://kizkalesi.herokuapp.com/events';
+// const API = 'http://localhost:3001/events';
 
 class FullMap extends React.Component {
   constructor(props) {
@@ -8,30 +11,29 @@ class FullMap extends React.Component {
 
     this.state = {
       events: [],
-      pins: [],
+      called: false
     };
   }
 
-  organizePins() {
-    console.log(this.state);
-  }
-
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     // perform axios call to fetch data
     axios
-      .get('http://127.0.0.1:3001/events', {})
-      .then(res => {
-        this.setState({
-          events: res.data,
-        });
-
-        this.organizePins();
-      })
+      .get(API, {})
+      .then(
+        function(res) {
+          this.setState({
+            events: res.data,
+            called: true
+          });
+        }.bind(this),
+      )
       .catch(err => console.log(err));
   }
 
   render() {
-    return <SimpleMap width="100%" height="95vh" listPins={this.state.pins} />;
+    return this.state.called ? (
+      <SimpleMap width="100%" height="95vh" listPins={this.state.events} />
+    ) : null;
   }
 }
 

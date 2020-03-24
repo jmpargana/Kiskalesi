@@ -4,7 +4,7 @@ import auth0Client from './Auth';
 import {Translation} from 'react-i18next';
 import M from 'materialize-css';
 import LanguageChoice from './LanguageChoice';
-import {navbarElements} from '../jsonData/navbarElements';
+import {navbarElements} from '../assets/jsonData/navbarElements';
 import {DropdownNavbarElements} from './DropdownNavbarElements';
 
 class NavBar extends React.Component {

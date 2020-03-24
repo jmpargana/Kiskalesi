@@ -7,10 +7,12 @@ import {Translation} from 'react-i18next';
 import {ContactInput} from './ContactInputs';
 import {GenreInputSelector} from './GenreInputSelector';
 import {TitleAbout} from './TitleAbout';
-import SimpleMap from './testmap';
+import SimpleMap from './SimpleMap';
 import M from 'materialize-css';
 
 const API = "https://kizkalesi.herokuapp.com/events/post"
+// const API = "http://localhost:3001/events/post"
+
 
 class CreateEvent extends Component {
   constructor(props) {

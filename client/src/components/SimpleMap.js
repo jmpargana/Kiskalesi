@@ -16,6 +16,8 @@ class SimpleMap extends Component {
 
     this.state = {
       clicked: false,
+      listPins: this.props.listPins ? this.organizePins(this.props.listPins) : [],
+      providedListPins: this.props.listPins ? true : false
     };
 
     this.onClick = this.onClick.bind(this);
@@ -30,6 +32,55 @@ class SimpleMap extends Component {
     height: '600px',
     zoom: 16,
   };
+
+  organizePins(listPins) {
+    let colors = {
+      amber: [],
+      red: [],
+      lime: [],
+      teal: [],
+      blue: [],
+      'deep-purple': [],
+      pink: [],
+      indigo: [],
+    };
+
+    this.props.listPins.forEach(event => {
+      switch (event.genre) {
+        case 'events':
+          colors['amber'].push(event);
+          break;
+        case 'restaurants':
+          colors['red'].push(event);
+          break;
+        case 'sailing':
+          colors['blue'].push(event);
+          break;
+        case 'shopping':
+          colors['indigo'].push(event);
+          break;
+        case 'museums':
+          colors['lime'].push(event);
+          break;
+        case 'attractions':
+          colors['deep-purple'].push(event);
+          break;
+        case 'parksgardens':
+          colors['teal'].push(event);
+          break;
+        case 'hotels':
+          colors['pink'].push(event);
+          break;
+        case 'howtoget':
+          colors['pink'].push(event);
+          break;
+        default:
+          throw new Error("Event doesn't contain a valid genre");
+      }
+    });
+
+    return colors;
+  }
 
   onClick(e) {
     this.setState({
@@ -66,6 +117,17 @@ class SimpleMap extends Component {
           ) : (
             ''
           )}
+
+          {this.state.providedListPins && Object.keys(this.state.listPins).map(color => (
+            this.state.listPins[color].map(pin => (
+              <AnyReactComponent 
+                text={pin.en.title}
+                lat={pin.center.lat}
+                lng={pin.center.lng}
+                color={color}
+              />
+            ))
+          ))}
         </GoogleMapReact>
       </div>
     );

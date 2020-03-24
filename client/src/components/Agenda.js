@@ -2,16 +2,18 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Redirect} from 'react-router-dom';
 import {Events} from './Events';
-import SimpleMap from './testmap';
+import SimpleMap from './SimpleMap';
 import M from 'materialize-css';
 
-const API = "https://kizkalesi.herokuapp.com/events"
+const API = 'https://kizkalesi.herokuapp.com/events';
+// const API = 'http://localhost:3001/events';
 
 class Agenda extends Component {
   constructor(props) {
     super(props);
     this.state = {
       events: [],
+      called: false,
     };
   }
 
@@ -26,6 +28,7 @@ class Agenda extends Component {
       .then(res => {
         this.setState({
           events: res.data,
+          called: true,
         });
       })
       .catch(err => console.log(err));
@@ -47,7 +50,10 @@ class Agenda extends Component {
         {this.props.location.pathname !== '/events' && (
           <div className="parallax-container">
             <div className="parallax">
-              <img src={"public" + this.props.location.pathname + ".jpg"} alt="2" />
+              <img
+                src={require('../assets/images' + this.props.location.pathname + '.jpg')}
+                alt="2"
+              />
             </div>
           </div>
         )}
@@ -58,7 +64,13 @@ class Agenda extends Component {
           />
         </div>
         <div className="parralax-container">
-          <SimpleMap height="500px" width="100%" />
+          {this.state.called ? (
+            <SimpleMap
+              height="500px"
+              width="100%"
+              listPins={this.state.events}
+            />
+          ) : null}
         </div>
       </>
     );

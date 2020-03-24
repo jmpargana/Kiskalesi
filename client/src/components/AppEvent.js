@@ -3,11 +3,12 @@ import EventContact from './EventContact';
 import axios from 'axios';
 import moment from 'moment';
 import auth0Client from './Auth';
-import SimpleMap from './testmap';
+import SimpleMap from './SimpleMap';
 import i18n from '../i18n';
 import M from 'materialize-css';
 
 const API = "https://kizkalesi.herokuapp.com/events/"
+// const API = "http://localhost:3001/events/"
 
 class AppEvent extends Component {
   constructor(props) {
