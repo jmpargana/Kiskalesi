@@ -69,9 +69,9 @@ class Home extends React.Component {
                       <>
                         <div style={{marginTop: '5%'}}></div>
                         <div className="row container">
-                          <div className="col s6 center-align">
+                          <div className="col s12 m6 center-align">
                             <div style={{marginTop: '8%'}}></div>
-                            <h4>{t(elem)}</h4>
+                            <h3>{t(elem)}</h3>
                             <p>
                               Ipsum veritatis recusandae minima deleniti
                               dignissimos Sunt consectetur quam voluptatem minus
@@ -94,7 +94,7 @@ class Home extends React.Component {
                               accusantium voluptas non Quia fugiat sapiente
                             </p>
                           </div>
-                          <div className="col s6">
+                          <div className="col s12 m6">
                             <div className="card hoverable">
                               <div
                                 className="card-image"
@@ -114,7 +114,7 @@ class Home extends React.Component {
                       <>
                         <div style={{marginTop: '5%'}}></div>
                         <div className="row container">
-                          <div className="col s6">
+                          <div className="col s12 m6">
                             <div className="card hoverable">
                               <div
                                 className="card-image"
@@ -129,9 +129,9 @@ class Home extends React.Component {
                             </div>
                           </div>
 
-                          <div className="col s6 center-align">
+                          <div className="col s12 m6 center-align">
                             <div style={{marginTop: '8%'}}></div>
-                            <h4>{t(elem)}</h4>
+                            <h3>{t(elem)}</h3>
                             <p>
                               Ipsum veritatis recusandae minima deleniti
                               dignissimos Sunt consectetur quam voluptatem minus
