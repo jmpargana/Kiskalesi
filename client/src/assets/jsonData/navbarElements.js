@@ -1,14 +1,20 @@
 export const navbarElements = [
   {
     cathegory: "explore",
-    list: ["restaurants", "shopping", "sailing"]
+    backgroundColor: "amber lighten-4",
+    list: ["restaurants", "shopping", "sailing"],
+    image: "ist2"
   },
   {
     cathegory: "experience",
-    list: ["museums", "attractions", "parksgardens"]
+    backgroundColor: "purple lighten-5",
+    list: ["museums", "attractions", "parksgardens"],
+    image: "ist3",
   },
   {
     cathegory: "infos",
-    list: ["hotels", "howtoget", "map"]
+    backgroundColor: "cyan lighten-4",
+    list: ["hotels", "howtoget", "map"],
+    image: "ist4"
   },
 ]

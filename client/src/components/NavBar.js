@@ -37,7 +37,10 @@ class NavBar extends React.Component {
                 <Link className="brand-logo teal-text" to="/">
                   {t('title')}
                 </Link>
-                <ul className="right hide-on-med-and-down">
+                <ul
+                  className="right hide-on-med-and-down"
+                  id="nav-mobile"
+                >
                   <li>
                     <Link className="teal-text" to="/events">
                       {t('events')}

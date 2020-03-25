@@ -59,7 +59,7 @@ class AppEvent extends Component {
             <div className="row">
               <div className="col no-padding">
                 <img
-                  className="materialboxed"
+                  className="materialboxed responsive-img"
                   src={event.img}
                   alt={event.title}
                   style={{width: '100%'}}
